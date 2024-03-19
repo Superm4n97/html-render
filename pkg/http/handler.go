@@ -37,6 +37,7 @@ type CRD struct {
 	GVK    schema.GroupVersionKind
 	Scoped string
 	Bound  bool
+	Icon   string
 }
 type CRDsInfo struct {
 	SessionID, ClusterName string
@@ -75,6 +76,7 @@ func (h *handler) handleResources(w http.ResponseWriter, r *http.Request) {
 				},
 				Scoped: "Namespaced",
 				Bound:  false,
+				Icon:   "/relative/path/to/icon",
 			},
 			{
 				GVK: schema.GroupVersionKind{
@@ -84,6 +86,7 @@ func (h *handler) handleResources(w http.ResponseWriter, r *http.Request) {
 				},
 				Scoped: "Namespaced",
 				Bound:  false,
+				Icon:   "/relative/path/to/icon",
 			},
 			{
 				GVK: schema.GroupVersionKind{
@@ -93,6 +96,7 @@ func (h *handler) handleResources(w http.ResponseWriter, r *http.Request) {
 				},
 				Scoped: "Namespaced",
 				Bound:  true,
+				Icon:   "/relative/path/to/icon",
 			},
 		},
 	}
@@ -112,7 +116,6 @@ func newHandler() *handler {
 		port: ":8080",
 	}
 }
-
 func (h *handler) addHandlers() {
 	http.HandleFunc("/", h.simpleIndexHandler)
 	http.HandleFunc("/index", h.httpFileHandler)
@@ -120,6 +123,22 @@ func (h *handler) addHandlers() {
 	http.HandleFunc("/top-student", student.TemplatedHandlerFile)
 	http.HandleFunc("/crd-test", student.CrdTest)
 	http.HandleFunc("/resource", h.handleResources)
+	http.HandleFunc("/bind", h.handleBind)
+}
+
+func (h *handler) handleBind(w http.ResponseWriter, r *http.Request) {
+	//logger := klog.FromContext(r.Context()).WithValues("method", r.Method, "url", r.URL.String())
+
+	prepareNoCache(w)
+
+	sessionID := r.URL.Query().Get("s")
+
+	group := r.URL.Query().Get("group")
+	resource := r.URL.Query().Get("resource")
+
+	klog.Infof("session id: %s\n", sessionID)
+	klog.Infof("group: %s\n", group)
+	klog.Infof("resource: %s\n", resource)
 }
 
 func StartServer() {
