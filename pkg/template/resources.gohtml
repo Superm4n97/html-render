@@ -32,8 +32,20 @@
             margin-bottom: 32px;
         }
     }
+    
+ 
+    .form-inner input[type="checkbox"]:checked + label.card{
+        border: 2px solid #4D4DCB;
+    }
+
+    .form-inner input[type="checkbox"]:disabled + label.card{
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
     .card {
         min-width: calc(33.3% - 12px);
+        cursor: pointer;
+        border: 2px solid transparent;
     }
     ul {
         gap: 4px;
@@ -56,7 +68,8 @@
             <input type="hidden" id="sessionID" name="sessionID" value="{{.SessionID}}">
             {{$sid := .SessionID}}
             {{ range $crd := .CRDs}}
-                <div class="card p-5">
+                 <input type="checkbox" class="is-hidden" id="{{$crd.GVK.Kind}}" name="{{$crd.GVK.Kind}}">
+                <label for="{{$crd.GVK.Kind}}" class="card p-5">
                     <div class="icon">
                         <img src="https://kubedb.com/assets/images/databases/logos/{{$crd.GVK.Kind}}.svg"/>
                     </div>
@@ -65,13 +78,13 @@
                         <li class="list-group-item"><span class="has-text-weight-medium">Group:</span> {{$crd.GVK.Group}}</li>
                         <li class="list-group-item"><span class="has-text-weight-medium">Scoped:</span> {{$crd.Scoped}}</li>
                     </ul>
-                    <a href="/bind?s={{$sid}}&resource={{$crd.GVK.Kind}}&group={{$crd.GVK.Group}}" class="button is-secondary is-flex has-text-weight-semibold is-capitalized {{$crd.GVK.Kind}}">Bind {{$crd.GVK.Kind}}</a>
+                   <!-- <a href="/bind?s={{$sid}}&resource={{$crd.GVK.Kind}}&group={{$crd.GVK.Group}}" class="button is-secondary is-flex has-text-weight-semibold is-capitalized {{$crd.GVK.Kind}}">Bind {{$crd.GVK.Kind}}</a> -->
                     
                     <!-- <div class="is-flex is-flex-direction-column is-align-items-center" style="gap: 8px">
                        <label class="checkbox"><input name="crds" type="checkbox" value="{{$crd.GVK.Kind}}.{{$crd.GVK.Group}}" />Bind</label> 
                     </div>
                     -->
-                </div>
+                </label>
             {{end}}
         </div>
         <div class="is-fullwidth footer-button is-flex is-justify-content-center">
