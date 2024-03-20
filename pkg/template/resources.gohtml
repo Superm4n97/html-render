@@ -14,9 +14,11 @@
             width: 100%;
             display: flex;
             align-items: center;
-            margin-bottom: 32px;
+            margin-bottom: 16px;
+            height: auto;
             img {
-                transform: scale(2);
+                width: 64px;
+                height: auto;
             }
         }
         max-width: 920px; 
@@ -33,7 +35,7 @@
         min-width: calc(33.3% - 12px);
     }
     ul {
-        gap: 8px; 
+        gap: 4px;
         margin-bottom: 16px;
     }
     .button.is-primary {
@@ -62,7 +64,7 @@
                         <li class="list-group-item">Group: {{$crd.GVK.Group}}</li>
                         <li class="list-group-item">Scoped: {{$crd.Scoped}}</li>
                     </ul>
-                    <a href="/bind?s={{$sid}}&resource={{$crd.GVK.Kind}}&group={{$crd.GVK.Group}}" class="button is-secondary is-flex {{$crd.GVK.Kind}}">Bind</a>
+                    <a href="/bind?s={{$sid}}&resource={{$crd.GVK.Kind}}&group={{$crd.GVK.Group}}" class="button is-secondary is-flex has-text-weight-semibold {{$crd.GVK.Kind}}">Bind</a>
                     
                     <!-- <div class="is-flex is-flex-direction-column is-align-items-center" style="gap: 8px">
                        <label class="checkbox"><input name="crds" type="checkbox" value="{{$crd.GVK.Kind}}.{{$crd.GVK.Group}}" />Bind</label> 
@@ -72,7 +74,7 @@
             {{end}}
         </div>
         <div class="is-fullwidth footer-button is-flex is-justify-content-center">
-            <input type="submit" value="BIND" class="button is-primary is-flex"/>
+            <input type="submit" value="BIND ALL DATABASES" class="button is-primary is-flex has-text-weight-semibold"/>
         </div>
     </form>
 </div>
