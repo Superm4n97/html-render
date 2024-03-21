@@ -130,21 +130,10 @@ func (h *handler) addHandlers() {
 func (h *handler) handleBind(w http.ResponseWriter, r *http.Request) {
 	//logger := klog.FromContext(r.Context()).WithValues("method", r.Method, "url", r.URL.String())
 
+	klog.Infof("handling bind api")
 	prepareNoCache(w)
 
 	data, err := io.ReadAll(r.Body)
-	if err != nil {
-		klog.Errorf(err.Error())
-		return
-	}
-	klog.Infof(string(data))
-
-	req, err := r.GetBody()
-	if err != nil {
-		klog.Errorf(err.Error())
-		return
-	}
-	_, err = req.Read(data)
 	if err != nil {
 		klog.Errorf(err.Error())
 		return
