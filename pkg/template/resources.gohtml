@@ -9,69 +9,69 @@
     <title>Resources</title>
 
     <style>
-    .container {
-        padding: 0 16px;
-    }
-    .form-wrapper {
-        .icon {
-            width: 100%;
-            display: flex;
-            align-items: center;
-            margin-bottom: 8px;
-            height: auto;
-            img {
-                width: 52px;
+        .container {
+            padding: 0 16px;
+        }
+        .form-wrapper {
+            .icon {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                margin-bottom: 8px;
                 height: auto;
+                img {
+                    width: 52px;
+                    height: auto;
+                }
+            }
+            max-width: 920px;
+            margin: 60px auto;
+            .form-inner {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
+                align-content: center;
+                justify-content: center;
+                gap: 16px;
+                margin-bottom: 32px;
             }
         }
-        max-width: 920px;
-        margin: 60px auto;
-        .form-inner {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
-            align-content: center;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 32px;
+
+        .form-inner input[type="checkbox"]:checked + label.card{
+            border: 2px solid #4D4DCB;
         }
-    }
 
-    .form-inner input[type="checkbox"]:checked + label.card{
-        border: 2px solid #4D4DCB;
-    }
-
-    .form-inner input[type="checkbox"]:disabled + label.card{
-        cursor: not-allowed;
-        opacity: 0.6;
-    }
-    .card {
-        cursor: pointer;
-        border: 2px solid transparent;
-        transition: 0.3s ease-in-out;
-    }
-    .card:hover {
-        border: 2px solid #e7e7e7;
-    }
-    ul {
-        margin-bottom: 8px;
-        gap: 4px;
-        li{
-            line-height: 120%;
-            text-align: center;
-            span {
-                line-break: anywhere;
-                font-size: 15px;
+        .form-inner input[type="checkbox"]:disabled + label.card{
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+        .card {
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 0.3s ease-in-out;
+        }
+        .card:hover {
+            border: 2px solid #e7e7e7;
+        }
+        ul {
+            margin-bottom: 8px;
+            gap: 4px;
+            li{
+                line-height: 120%;
+                text-align: center;
+                span {
+                    line-break: anywhere;
+                    font-size: 15px;
+                }
             }
         }
-    }
-    .button.is-primary {
-        background-color: #4D4DCB;
-        padding: 10px 32px;
-        line-height: 1;
-        &:hover {
-            background-color: #4444bc;
+        .button.is-primary {
+            background-color: #4D4DCB;
+            padding: 10px 32px;
+            line-height: 1;
+            &:hover {
+                background-color: #4444bc;
+            }
         }
-    }
     </style>
 </head>
 <body>
@@ -80,15 +80,16 @@
         <div class="form-inner">
             <input type="hidden" id="sessionID" name="sessionID" value="{{.SessionID}}">
             {{$sid := .SessionID}}
-            {{ range $crd := .CRDs}}
-                 <input type="checkbox" class="is-hidden" id="{{$crd.GVK.Kind}}" name="{{$crd.GVK.Kind}}" {{if $crd.Bound}} disabled{{end}}>
-                <label for="{{$crd.GVK.Kind}}" class="card p-5">
+            {{ range $idx, $crd := .CRDs}}
+                {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
+                <input type="checkbox" class="is-hidden" id="crd_{{$idx}}" name="crd" value="{{$gr}}" {{if $crd.Bound}} disabled{{end}}>
+                <label for="crd_{{$idx}}" class="card p-5">
                     <div class="icon">
-                        <img src="https://kubedb.com/assets/images/databases/logos/{{$crd.GVK.Kind}}.svg"/>
+                        <img src="{{$crd.Icon}}"/>
                     </div>
-                    <h4 class="is-size-4 has-text-centered has-text-weight-semibold is-capitalized">{{$crd.GVK.Kind}}</h4>
+                    <h4 class="is-size-4 has-text-centered has-text-weight-semibold is-capitalized">{{$crd.Kind}}</h4>
                     <ul class="is-flex is-flex-direction-column is-align-items-center">
-                        <li class="list-group-item"><span class="has-text-weight-medium">Group:</span> <span>{{$crd.GVK.Group}}</span></li>
+                        <li class="list-group-item"><span class="has-text-weight-medium">Group:</span> <span>{{$crd.Group}}</span></li>
                         <li class="list-group-item"><span class="has-text-weight-medium">Scoped:</span> <span>{{$crd.Scoped}}</span></li>
                     </ul>
                 </label>

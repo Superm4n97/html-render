@@ -3,11 +3,11 @@ package http
 import (
 	"bytes"
 	"fmt"
+	"github.com/Masterminds/sprig/v3"
 	"github.com/Superm4n97/html-render/pkg/student"
 	"github.com/Superm4n97/html-render/pkg/template"
+	gs "github.com/gorilla/schema"
 	htmltemplate "html/template"
-	"io"
-	"k8s.io/apimachinery/pkg/runtime/schema"
 	"k8s.io/klog/v2"
 	"net/http"
 	"time"
@@ -24,7 +24,8 @@ func (h *handler) httpFileHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./pkg/template/index.html")
 }
 
-var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resource").Parse(mustRead(template.Files.ReadFile, "resources.gohtml")))
+//var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resource").Parse(mustRead(template.Files.ReadFile, "resources.gohtml")))
+//var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resources.gohtml"))
 
 func mustRead(f func(name string) ([]byte, error), name string) string {
 	bs, err := f(name)
@@ -35,11 +36,14 @@ func mustRead(f func(name string) ([]byte, error), name string) string {
 }
 
 type CRD struct {
-	GVK    schema.GroupVersionKind
-	Scoped string
-	Bound  bool
-	Icon   string
+	Group    string
+	Resource string
+	Kind     string
+	Scoped   string
+	Bound    bool
+	Icon     string
 }
+
 type CRDsInfo struct {
 	SessionID, ClusterName string
 	CRDs                   []CRD
@@ -65,39 +69,37 @@ func (h *handler) handleResources(w http.ResponseWriter, r *http.Request) {
 
 	prepareNoCache(w)
 
+	var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resources.gohtml").
+		Funcs(sprig.HtmlFuncMap()).
+		ParseFS(template.Files, "*"))
+
 	crdsInfo := CRDsInfo{
 		SessionID:   "1234567",
 		ClusterName: "my-test-cluster",
 		CRDs: []CRD{
 			{
-				GVK: schema.GroupVersionKind{
-					Group:   "catalog.appscode.com",
-					Version: "v1alpha1",
-					Kind:    "mysql",
-				},
-				Scoped: "Namespaced",
-				Bound:  false,
-				Icon:   "/relative/path/to/icon",
+				Group:    "kubedb.com",
+				Resource: "mongodbs",
+				Kind:     "MongoDB",
+				Scoped:   "Namespaced",
+				Bound:    false,
+				Icon:     "https://cdn.appscode.com/k8s/icons/kubedb.com/mongodbs.svg",
 			},
 			{
-				GVK: schema.GroupVersionKind{
-					Group:   "catalog.appscode.com",
-					Version: "v1alpha1",
-					Kind:    "mongodb",
-				},
-				Scoped: "Namespaced",
-				Bound:  false,
-				Icon:   "/relative/path/to/icon",
+				Group:    "kubedb.com",
+				Resource: "mysqls",
+				Kind:     "MySQL",
+				Scoped:   "Namespaced",
+				Bound:    false,
+				Icon:     "https://cdn.appscode.com/k8s/icons/kubedb.com/mysqls.svg",
 			},
 			{
-				GVK: schema.GroupVersionKind{
-					Group:   "catalog.appscode.com",
-					Version: "v1alpha1",
-					Kind:    "postgresql",
-				},
-				Scoped: "Namespaced",
-				Bound:  true,
-				Icon:   "/relative/path/to/icon",
+				Group:    "kubedb.com",
+				Resource: "postgreses",
+				Kind:     "Postgres",
+				Scoped:   "Namespaced",
+				Bound:    true,
+				Icon:     "https://cdn.appscode.com/k8s/icons/kubedb.com/postgreses.svg",
 			},
 		},
 	}
@@ -127,27 +129,36 @@ func (h *handler) addHandlers() {
 	http.HandleFunc("/bind", h.handleBind)
 }
 
+type BindForm struct {
+	SessionID string   `schema:"sessionID"`
+	GRs       []string `schema:"crd"`
+}
+
+var decoder = gs.NewDecoder()
+
 func (h *handler) handleBind(w http.ResponseWriter, r *http.Request) {
 	//logger := klog.FromContext(r.Context()).WithValues("method", r.Method, "url", r.URL.String())
 
 	klog.Infof("handling bind api")
 	prepareNoCache(w)
 
-	data, err := io.ReadAll(r.Body)
+	err := r.ParseForm()
 	if err != nil {
-		klog.Errorf(err.Error())
+		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
-	klog.Infof(string(data))
 
-	sessionID := r.URL.Query().Get("s")
+	var form BindForm
+	// r.PostForm is a map of our POST form values
 
-	group := r.URL.Query().Get("group")
-	resource := r.URL.Query().Get("resource")
+	err = decoder.Decode(&form, r.PostForm)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
 
-	klog.Infof("session id: %s\n", sessionID)
-	klog.Infof("group: %s\n", group)
-	klog.Infof("resource: %s\n", resource)
+	// Do something with person.Name or person.Phone
+	fmt.Fprintf(w, "FORM: %+v", form)
 }
 
 func StartServer() {
