@@ -10,6 +10,7 @@ import (
 	htmltemplate "html/template"
 	"k8s.io/klog/v2"
 	"net/http"
+	"os"
 	"time"
 )
 
@@ -127,6 +128,7 @@ func (h *handler) addHandlers() {
 	http.HandleFunc("/crd-test", student.CrdTest)
 	http.HandleFunc("/resource", h.handleResources)
 	http.HandleFunc("/bind", h.handleBind)
+	http.HandleFunc("/success", h.handleSuccess)
 }
 
 type BindForm struct {
@@ -161,11 +163,25 @@ func (h *handler) handleBind(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "FORM: %+v", form)
 }
 
+func (h *handler) handleSuccess(w http.ResponseWriter, r *http.Request) {
+
+	data, err := os.ReadFile("./pkg/template/success.html")
+	if err != nil {
+		klog.Errorf(err.Error())
+		return
+	}
+	if _, err = w.Write(data); err != nil {
+		klog.Errorf(err.Error())
+		return
+	}
+	return
+}
+
 func StartServer() {
 	klog.Infof("creating http server...")
 	h := newHandler()
 	h.addHandlers()
-	klog.Infof("starting server...")
+	klog.Infof("starting server in port :8080...")
 	if err := http.ListenAndServe(h.port, nil); err != nil {
 		klog.Errorf(err.Error())
 	}
