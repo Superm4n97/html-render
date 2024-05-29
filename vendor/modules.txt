@@ -10,9 +10,6 @@ github.com/Masterminds/sprig/v3
 # github.com/go-logr/logr v1.4.1
 ## explicit; go 1.18
 github.com/go-logr/logr
-# github.com/gogo/protobuf v1.3.2
-## explicit; go 1.15
-github.com/gogo/protobuf/proto
 # github.com/google/uuid v1.3.0
 ## explicit
 github.com/google/uuid
@@ -37,15 +34,16 @@ github.com/shopspring/decimal
 # github.com/spf13/cast v1.3.1
 ## explicit
 github.com/spf13/cast
+# github.com/stretchr/testify v1.8.4
+## explicit; go 1.20
 # golang.org/x/crypto v0.3.0
 ## explicit; go 1.17
 golang.org/x/crypto/bcrypt
 golang.org/x/crypto/blowfish
 golang.org/x/crypto/pbkdf2
 golang.org/x/crypto/scrypt
-# k8s.io/apimachinery v0.29.2
-## explicit; go 1.21
-k8s.io/apimachinery/pkg/runtime/schema
+# gopkg.in/yaml.v2 v2.4.0
+## explicit; go 1.15
 # k8s.io/klog/v2 v2.120.1
 ## explicit; go 1.18
 k8s.io/klog/v2
