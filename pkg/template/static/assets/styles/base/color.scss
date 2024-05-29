@@ -1,0 +1,10 @@
+:root {
+    /* colors */
+    --clr-primary: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-light));
+    --clr-secondary: hsl(var(--secondary-hue), var(--secondary-saturation), var(--secondary-light));
+
+    --clr-black: hsl(var(--black));
+    --clr-white: hsl(var(--white));
+
+    --clr-gray-50: hsl(var(--white), 50%);
+}
