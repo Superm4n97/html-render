@@ -10,4 +10,5 @@ var Files embed.FS
 const (
 	TemplateResources = "resources.gohtml"
 	TemplateSuccess   = "success.gohtml"
+	TemplateMainCSS   = "main.css"
 )

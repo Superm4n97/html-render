@@ -2,10 +2,11 @@ package http
 
 import (
 	"bytes"
+	"embed"
 	"fmt"
 	"github.com/Masterminds/sprig/v3"
-	"github.com/Superm4n97/html-render/pkg/student"
 	"github.com/Superm4n97/html-render/pkg/template"
+	"github.com/Superm4n97/html-render/pkg/template/static/assets/styles"
 	gs "github.com/gorilla/schema"
 	htmltemplate "html/template"
 	"k8s.io/klog/v2"
@@ -13,10 +14,10 @@ import (
 	"time"
 )
 
-func getTemplate(t string) *htmltemplate.Template {
+func getTemplate(files embed.FS, t string) *htmltemplate.Template {
 	return htmltemplate.Must(htmltemplate.New(t).
 		Funcs(sprig.HtmlFuncMap()).
-		ParseFS(template.Files, t))
+		ParseFS(files, t))
 }
 
 //var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resources.gohtml").
@@ -115,7 +116,7 @@ func (h *handler) handleResources(w http.ResponseWriter, r *http.Request) {
 		},
 	}
 	bs := bytes.Buffer{}
-	resourcesTemplate := getTemplate(template.TemplateResources)
+	resourcesTemplate := getTemplate(template.Files, template.TemplateResources)
 	if err := resourcesTemplate.Execute(&bs, crdsInfo); err != nil {
 		logger.Error(err, "failed to execute template")
 		http.Error(w, "internal error", http.StatusInternalServerError)
@@ -132,14 +133,15 @@ func newHandler() *handler {
 	}
 }
 func (h *handler) addHandlers() {
-	http.HandleFunc("/", h.simpleIndexHandler)
-	http.HandleFunc("/index", h.httpFileHandler)
-	http.HandleFunc("/student", student.TemplatedHandlerBasic)
-	http.HandleFunc("/top-student", student.TemplatedHandlerFile)
-	http.HandleFunc("/crd-test", student.CrdTest)
+	//http.HandleFunc("/", h.simpleIndexHandler)
+	//http.HandleFunc("/index", h.httpFileHandler)
+	//http.HandleFunc("/student", student.TemplatedHandlerBasic)
+	//http.HandleFunc("/top-student", student.TemplatedHandlerFile)
+	//http.HandleFunc("/crd-test", student.CrdTest)
 	http.HandleFunc("/resource", h.handleResources)
-	http.HandleFunc("/bind", h.handleBind)
-	http.HandleFunc("/success", h.handleSuccess)
+	http.HandleFunc("/main.css", h.handleCSS)
+	//http.HandleFunc("/bind", h.handleBind)
+	//http.HandleFunc("/success", h.handleSuccess)
 }
 
 type BindForm struct {
@@ -183,7 +185,7 @@ func (h *handler) handleSuccess(w http.ResponseWriter, r *http.Request) {
 	success := SuccessTemp{
 		RedirectURL: "https://db.appscode.com/appscode/opscenter-linode/ui.appscode.com/v1alpha1/sections/datastore",
 	}
-	st := getTemplate(template.TemplateSuccess)
+	st := getTemplate(template.Files, template.TemplateSuccess)
 	if err := st.Execute(&bs, success); err != nil {
 		klog.Errorf(err.Error())
 		http.Error(w, "internal error", http.StatusInternalServerError)
@@ -202,4 +204,17 @@ func StartServer() {
 	if err := http.ListenAndServe(h.port, nil); err != nil {
 		klog.Errorf(err.Error())
 	}
+}
+
+func (h *handler) handleCSS(w http.ResponseWriter, r *http.Request) {
+	bs := bytes.Buffer{}
+	resourcesTemplate := getTemplate(styles.Files, template.TemplateMainCSS)
+	if err := resourcesTemplate.Execute(&bs, nil); err != nil {
+		klog.Infof(err.Error())
+		http.Error(w, "internal error", http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "text/css")
+	w.Write(bs.Bytes()) // nolint:errcheck
 }
