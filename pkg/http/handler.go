@@ -10,9 +10,18 @@ import (
 	htmltemplate "html/template"
 	"k8s.io/klog/v2"
 	"net/http"
-	"os"
 	"time"
 )
+
+func getTemplate(t string) *htmltemplate.Template {
+	return htmltemplate.Must(htmltemplate.New(t).
+		Funcs(sprig.HtmlFuncMap()).
+		ParseFS(template.Files, t))
+}
+
+//var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resources.gohtml").
+//	Funcs(sprig.HtmlFuncMap()).
+//	ParseFS(template.Files, "resources.gohtml"))
 
 type handler struct {
 	port string
@@ -24,9 +33,6 @@ func (h *handler) simpleIndexHandler(w http.ResponseWriter, r *http.Request) {
 func (h *handler) httpFileHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, "./pkg/template/index.html")
 }
-
-//var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resource").Parse(mustRead(template.Files.ReadFile, "resources.gohtml")))
-//var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resources.gohtml"))
 
 func mustRead(f func(name string) ([]byte, error), name string) string {
 	bs, err := f(name)
@@ -70,10 +76,6 @@ func (h *handler) handleResources(w http.ResponseWriter, r *http.Request) {
 
 	prepareNoCache(w)
 
-	var resourcesTemplate = htmltemplate.Must(htmltemplate.New("resources.gohtml").
-		Funcs(sprig.HtmlFuncMap()).
-		ParseFS(template.Files, "*"))
-
 	crdsInfo := CRDsInfo{
 		SessionID:   "1234567",
 		ClusterName: "my-test-cluster",
@@ -102,9 +104,18 @@ func (h *handler) handleResources(w http.ResponseWriter, r *http.Request) {
 				Bound:    true,
 				Icon:     "https://cdn.appscode.com/k8s/icons/kubedb.com/postgreses.svg",
 			},
+			{
+				Group:    "kubedb.com",
+				Resource: "kafka",
+				Kind:     "Kafka",
+				Scoped:   "Namespaced",
+				Bound:    false,
+				Icon:     "https://cdn.appscode.com/k8s/icons/kubedb.com/kafkas.svg",
+			},
 		},
 	}
 	bs := bytes.Buffer{}
+	resourcesTemplate := getTemplate(template.TemplateResources)
 	if err := resourcesTemplate.Execute(&bs, crdsInfo); err != nil {
 		logger.Error(err, "failed to execute template")
 		http.Error(w, "internal error", http.StatusInternalServerError)
@@ -163,18 +174,24 @@ func (h *handler) handleBind(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "FORM: %+v", form)
 }
 
-func (h *handler) handleSuccess(w http.ResponseWriter, r *http.Request) {
+type SuccessTemp struct {
+	RedirectURL string
+}
 
-	data, err := os.ReadFile("./pkg/template/success.html")
-	if err != nil {
+func (h *handler) handleSuccess(w http.ResponseWriter, r *http.Request) {
+	bs := bytes.Buffer{}
+	success := SuccessTemp{
+		RedirectURL: "https://db.appscode.com/appscode/opscenter-linode/ui.appscode.com/v1alpha1/sections/datastore",
+	}
+	st := getTemplate(template.TemplateSuccess)
+	if err := st.Execute(&bs, success); err != nil {
 		klog.Errorf(err.Error())
+		http.Error(w, "internal error", http.StatusInternalServerError)
 		return
 	}
-	if _, err = w.Write(data); err != nil {
-		klog.Errorf(err.Error())
-		return
-	}
-	return
+
+	w.Header().Set("Content-Type", "text/html")
+	w.Write(bs.Bytes())
 }
 
 func StartServer() {
