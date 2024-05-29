@@ -1,3 +1,52 @@
-body {
-    background-color: #333;
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:wght@100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+:root {
+  /* root */
+  --primary-hue: 149;
+  --primary-saturation: 100%;
+  --primary-light: 30%;
+  --secondary-hue: 196;
+  --secondary-saturation: 50%;
+  --secondary-light: 20%;
+  --white: 0 0% 100%;
+  --black: 0 0% 0%;
+  --shadow-sm: 0 1px 4px rgba(26, 80, 151, 0.16);
+  --shadow-lg: 0 3px 4px 0 rgba(0, 0, 0, 0.18), 0 3px 3px -2px rgba(0, 0, 0, 0.16), 0 1px 6px 0 rgba(0, 0, 0, 0.12);
+  --shadow-xl: 0px 8px 57px rgba(0, 0, 0, 0.16);
 }
+
+:root {
+  /* colors */
+  --clr-primary: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-light));
+  --clr-secondary: hsl(var(--secondary-hue), var(--secondary-saturation), var(--secondary-light));
+  --clr-black: hsl(var(--black));
+  --clr-white: hsl(var(--white));
+  --clr-gray-50: hsl(var(--white), 50%);
+}
+
+:root {
+  /* typography */
+  --clr-text: hsl(var(--secondary-hue), 10%, 35%);
+  --clr-heading: hsl(var(--secondary-hue), 10%, 10%);
+  --clr-label: hsl(var(--secondary-hue), 20%, 30%);
+  --clr-link: hsl(var(--secondary-hue), 40%, 20%);
+  --clr-border-light: hsl(var(--secondary-hue), 40%, 95%);
+  --clr-border: hsl(var(--secondary-hue), 10%, 90%);
+  --clr-border-dark: hsl(var(--secondary-hue), 10%, 80%);
+  /* font-sizes */
+  --fs-xxl: 2rem;
+  --fs-xl: 1.5rem;
+  --fs-lg: 1.25rem;
+  --fs-base: 1rem;
+  --fs-sm: 0.875rem;
+  --fs-xsm: 0.750rem;
+  /* font-families */
+  --ff-paragraph: "Roboto", sans-serif;
+  --ff-heading: "Inter", sans-serif;
+  --ff-code: "Inconsolata", monospace;
+}
+
+body {
+  background-color: #333;
+}
+
+/*# sourceMappingURL=main.css.map */

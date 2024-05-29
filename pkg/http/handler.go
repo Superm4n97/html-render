@@ -9,9 +9,13 @@ import (
 	"github.com/Superm4n97/html-render/pkg/template/static/assets/styles"
 	gs "github.com/gorilla/schema"
 	htmltemplate "html/template"
-	"k8s.io/klog/v2"
 	"net/http"
 	"time"
+
+	"github.com/Masterminds/sprig/v3"
+	"github.com/Superm4n97/html-render/pkg/template"
+	gs "github.com/gorilla/schema"
+	"k8s.io/klog/v2"
 )
 
 func getTemplate(files embed.FS, t string) *htmltemplate.Template {
@@ -127,12 +131,26 @@ func (h *handler) handleResources(w http.ResponseWriter, r *http.Request) {
 	w.Write(bs.Bytes()) // nolint:errcheck
 }
 
+func (h *handler) handleCSS(w http.ResponseWriter, r *http.Request) {
+    bs := bytes.Buffer{}
+    resourcesTemplate := getTemplate(template.TemplateMainCSS)
+    if err := resourcesTemplate.Execute(&bs, ""); err != nil {
+       klog.Infof(err.Error())
+       http.Error(w, "internal error", http.StatusInternalServerError)
+       return
+    }
+
+    w.Header().Set("Content-Type", "text/css")
+    w.Write(bs.Bytes()) // nolint:errcheck
+}
+
 func newHandler() *handler {
 	return &handler{
 		port: ":8080",
 	}
 }
 func (h *handler) addHandlers() {
+<<<<<<< HEAD
 	//http.HandleFunc("/", h.simpleIndexHandler)
 	//http.HandleFunc("/index", h.httpFileHandler)
 	//http.HandleFunc("/student", student.TemplatedHandlerBasic)
@@ -142,6 +160,17 @@ func (h *handler) addHandlers() {
 	http.HandleFunc("/main.css", h.handleCSS)
 	//http.HandleFunc("/bind", h.handleBind)
 	//http.HandleFunc("/success", h.handleSuccess)
+=======
+	// http.HandleFunc("/", h.simpleIndexHandler)
+	// http.HandleFunc("/index", h.httpFileHandler)
+	// http.HandleFunc("/student", student.TemplatedHandlerBasic)
+	// http.HandleFunc("/top-student", student.TemplatedHandlerFile)
+	// http.HandleFunc("/crd-test", student.CrdTest)
+	http.HandleFunc("/resource", h.handleResources)
+	http.HandleFunc("/main.css", h.handleCSS)
+	// http.HandleFunc("/bind", h.handleBind)
+	// http.HandleFunc("/success", h.handleSuccess)
+>>>>>>> ba73226 (Add styles)
 }
 
 type BindForm struct {
