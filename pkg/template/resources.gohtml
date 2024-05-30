@@ -4,15 +4,21 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bulma CSS -->
-    {{/* <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"> */}}
     <link rel="stylesheet" href="main.css">
     <title>Resources</title>
 
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Load Roboto font asynchronously with font-display: swap -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+
+    <!-- Font Awesome 4.7 CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'">
+    
     <style>
-        .container {
-            padding: 0 16px;
-        }
+      
         .form-wrapper {
             .icon {
                 width: 100%;
@@ -25,8 +31,6 @@
                     height: auto;
                 }
             }
-            max-width: 920px;
-            margin: 60px auto;
             .form-inner {
                 display: grid;
                 grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
@@ -65,14 +69,6 @@
                 }
             }
         }
-        .button.is-primary {
-            background-color: #4D4DCB;
-            padding: 10px 32px;
-            line-height: 1;
-            &:hover {
-                background-color: #4444bc;
-            }
-        }
        
     </style>
 </head>
@@ -88,7 +84,7 @@
          <div class="navbar-appscode-wrapper">
             <div class="navbar-appscode container height-60">
                <div class="navbar-left">
-                  <div class="navbar-brand"><a href="https://appscode.com"><img src="/assets/images/products/appscode/appscode.svg" alt="AppsCode" loading="eager" height="30" width="auto"></a>
+                  <div class="navbar-brand"><a href="https://appscode.com"><img src="https://cdn.appscode.com/images/products/appscode/appscode.svg" alt="AppsCode" loading="eager" height="30" width="auto"></a>
                      <a role="button" class="navbar-burger is-hidden-desktop" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span>
                      <span aria-hidden="true"></span>
                      <span aria-hidden="true"></span></a>
@@ -435,6 +431,7 @@
    </div>
 </header>
 
+<section class="section-padding pt-100">
 <div class="container">
     <form action="/bind" method="post" class="form-wrapper">
         <div class="form-inner">
@@ -456,10 +453,11 @@
             {{end}}
         </div>
         <div class="is-fullwidth footer-button is-flex is-justify-content-center">
-            <input type="submit" value="BIND DATABASES" class="button is-primary is-flex has-text-weight-semibold"/>
+            <input type="submit" value="BIND DATABASES" class="button ac-button is-primary"/>
         </div>
     </form>
 </div>
+</section>
 
 </body>
 </html>
