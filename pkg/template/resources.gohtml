@@ -73,12 +73,368 @@
                 background-color: #4444bc;
             }
         }
-        .container {
-            background-color: var(--clr-black);
-        }
+       
     </style>
 </head>
 <body>
+
+<header>
+   <div class="navbar-area header--fixed">
+      <iframe src="/notification-top/" id="notification" frameborder="0" scrolling="no" style="width:100%;display:flex;overflow:hidden;height:0" title="notification"></iframe>
+
+      <script>window.addEventListener("message",receiveMessageFromIframe,!1);function receiveMessageFromIframe(e){let t="https://appscode.com";if(t.endsWith("/")&&(t=t.slice(0,-1)),e.origin!==t)return;const n=document.querySelector("#notification");n.style.height=`${e.data}px`}</script>
+      
+      <div class="navbar-area navbar-fixed">
+         <div class="navbar-appscode-wrapper">
+            <div class="navbar-appscode container height-60">
+               <div class="navbar-left">
+                  <div class="navbar-brand"><a href="https://appscode.com"><img src="/assets/images/products/appscode/appscode.svg" alt="AppsCode" loading="eager" height="30" width="auto"></a>
+                     <a role="button" class="navbar-burger is-hidden-desktop" aria-label="menu" aria-expanded="false"><span aria-hidden="true"></span>
+                     <span aria-hidden="true"></span>
+                     <span aria-hidden="true"></span></a>
+                  </div>
+               </div>
+               <div class="navbar-right">
+                  <div class="is-flex is-justify-content-space-between is-fullwidth">
+                     <ul class="navbar-left-group">
+                        <li class="nav-item">
+                           <button class="link">Products <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                           <div class="mega-menu-wrapper">
+                              <div class="mega-menu-inner container">
+                                 <button class="button ac-button inline-button back-button">
+                                    <span class="icon p-0">
+                                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="size-6">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 010 12h-3"></path>
+                                       </svg>
+                                    </span>
+                                    <span>Back</span>
+                                 </button>
+                                 <div class="product-menu">
+                                    <a class="single-product is-active" href="https://kubedb.com">
+                                       <div class="product-logo"><img src="/assets/images/products/kubedb/kubedb-icon.svg" alt="KubeDB" loading="lazy"></div>
+                                       <div class="product-info">
+                                          <h2 class="is-size-6">KubeDB</h2>
+                                          <p>Run Production-Grade Databases on Kubernetes</p>
+                                       </div>
+                                       <div class="navigate-icon">
+                                          <span class="icon">
+                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </a>
+                                    <a class="single-product" href="https://stash.run">
+                                       <div class="product-logo"><img src="/assets/images/products/stash/stash-icon.svg" alt="Stash" loading="lazy"></div>
+                                       <div class="product-info">
+                                          <h2 class="is-size-6">Stash</h2>
+                                          <p>Backup and Recovery Solution for Kubernetes</p>
+                                       </div>
+                                       <div class="navigate-icon">
+                                          <span class="icon">
+                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </a>
+                                    <a class="single-product" href="https://kubevault.com">
+                                       <div class="product-logo"><img src="/assets/images/products/kubevault/kubevault-icon.svg" alt="KubeVault" loading="lazy"></div>
+                                       <div class="product-info">
+                                          <h2 class="is-size-6">KubeVault</h2>
+                                          <p>Run Production-Grade Vault on Kubernetes</p>
+                                       </div>
+                                       <div class="navigate-icon">
+                                          <span class="icon">
+                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </a>
+                                    <a class="single-product" href="https://voyagermesh.com">
+                                       <div class="product-logo"><img src="/assets/images/products/voyager/voyager-icon.svg" alt="Voyager" loading="lazy"></div>
+                                       <div class="product-info">
+                                          <h2 class="is-size-6">Voyager</h2>
+                                          <p>Secure Ingress Controller for Kubernetes</p>
+                                       </div>
+                                       <div class="navigate-icon">
+                                          <span class="icon">
+                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </a>
+                                    <a class="single-product" href="https://config-syncer.com">
+                                       <div class="product-logo"><img src="/assets/images/products/configsyncer/configsyncer-512x512.svg" alt="configsyncer" loading="lazy"></div>
+                                       <div class="product-info">
+                                          <h2 class="is-size-6">ConfigSyncer</h2>
+                                          <p>Kubernetes Configuration Syncer</p>
+                                       </div>
+                                       <div class="navigate-icon">
+                                          <span class="icon">
+                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </a>
+                                    <a class="single-product" href="https://kubeguard.dev">
+                                       <div class="product-logo"><img src="/assets/images/products/guard/guard-512x512.svg" alt="Guard" loading="lazy"></div>
+                                       <div class="product-info">
+                                          <h2 class="is-size-6">Guard</h2>
+                                          <p>Kubernetes Authentication WebHook Server</p>
+                                       </div>
+                                       <div class="navigate-icon">
+                                          <span class="icon">
+                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                             </svg>
+                                          </span>
+                                       </div>
+                                    </a>
+                                 </div>
+                                 <div class="product-description is-block">
+                                    <div class="brand"><img src="/assets/images/products/kubedb/kubedb.svg" alt="KubeDB" loading="lazy" height="30" width="auto"></div>
+                                    <p>KubeDB simplifies Provisioning, Upgrading, Scaling, Volume Expansion, Monitor, Backup, Restore for various Databases in Kubernetes on any Public &amp; Private Cloud</p>
+                                    <ul class="features">
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Lower administrative burden</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Native Kubernetes Support</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Performance</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Availability and durability</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Manageability</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Cost-effectiveness</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Security</span>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <div class="product-description">
+                                    <div class="brand"><img src="/assets/images/products/stash/stash.png" alt="Stash" loading="lazy" height="30" width="auto"></div>
+                                    <p>A complete Kubernetes native disaster recovery solution for backup and restore your volumes and databases in Kubernetes on any public and private clouds.</p>
+                                    <ul class="features">
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Declarative API</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Backup Kubernetes Volumes</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Backup Database</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Multiple Storage Support</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Deduplication</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Data Encryption</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Volume Snapshot</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Policy Based Backup</span>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <div class="product-description">
+                                    <div class="brand"><img src="/assets/images/products/kubevault/kubevault.png" alt="KubeVault" loading="lazy"></div>
+                                    <p>KubeVault is a Git-Ops ready, production-grade solution for deploying and configuring Hashicorp's Vault on Kubernetes.</p>
+                                    <ul class="features">
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Vault Kubernetes Deployment</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Auto Initialization &amp; Unsealing</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Vault Backup &amp; Restore</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Consume KubeVault Secrets with CSI</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Manage DB Users Privileges</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Storage Backend</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Authentication Method</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Database Secret Engine</span>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <div class="product-description">
+                                    <div class="brand"><img src="/assets/images/products/voyager/voyager.png" alt="Voyager" loading="lazy"></div>
+                                    <p>Secure Ingress Controller for Kubernetes</p>
+                                    <ul class="features">
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>HTTP &amp; TCP</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>SSL</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Platform support</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>HAProxy</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Prometheus</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Let's Encrypt</span>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <div class="product-description">
+                                    <div class="brand"><img src="/assets/images/products/configsyncer/configsyncer.png" alt="configsyncer" loading="lazy"></div>
+                                    <p>Kubernetes Configuration Syncer</p>
+                                    <ul class="features">
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Configuration Syncer</span>
+                                       </li>
+                                    </ul>
+                                 </div>
+                                 <div class="product-description">
+                                    <div class="brand"><img src="/assets/images/products/guard/guard.png" alt="Guard" loading="lazy"></div>
+                                    <p>Kubernetes Authentication WebHook Server</p>
+                                    <ul class="features">
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>Identity Providers</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>CLI</span>
+                                       </li>
+                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                          <span>RBAC</span>
+                                       </li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                           <script type="text/javascript">const productDescriptions=document.querySelectorAll(".product-description"),products=document.querySelectorAll(".single-product");productDescriptions[0].classList.add("is-block"),products[0].classList.add("is-active"),products.forEach((e,t)=>{e.addEventListener("mouseover",function(){const e=document.querySelector(".product-description.is-block"),n=document.querySelector(".single-product.is-active");e.classList.remove("is-block"),n.classList.remove("is-active"),productDescriptions[t].classList.add("is-block"),products[t].classList.add("is-active")})})</script>
+                        </li>
+                        <li class="nav-item">
+                           <button class="link">Resources <i class="fa fa-angle-down" aria-hidden="true"></i></button>
+                           <div class="mega-menu-wrapper">
+                              <div class="mega-menu-inner container">
+                                 <button class="button is-small ac-button inline-button back-button">
+                                    <span class="icon p-0">
+                                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="size-6">
+                                          <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 010 12h-3"></path>
+                                       </svg>
+                                    </span>
+                                    <span>Back to Resources</span>
+                                 </button>
+                                 <div class="resources-list">
+                                    <div class="list-items">
+                                       <h2>RESOURCES</h2>
+                                       <ul>
+                                          <li>
+                                             <a href="https://appscode.com/blog" class="is-flex is-gap-4">
+                                                <span>Blog</span>
+                                                <span class="is-flex width-12">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                                   </svg>
+                                                </span>
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="https://appscode.com/docs" class="is-flex is-gap-4">
+                                                <span>Docs</span>
+                                                <span class="is-flex width-12">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                                   </svg>
+                                                </span>
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="https://www.youtube.com/watch?v=4lkBt5UUEAQ&amp;list=PLoiT1Gv2KR1hAtDDW7fHEi-s2y2H3DOgx" target="_blank" class="is-flex is-gap-4">
+                                                <span>Webinars</span>
+                                                <span class="is-flex width-12">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                                   </svg>
+                                                </span>
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="https://appscode.com/learn" class="is-flex is-gap-4">
+                                                <span>Learn</span>
+                                                <span class="is-flex width-12">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                                   </svg>
+                                                </span>
+                                             </a>
+                                          </li>
+                                          <li>
+                                             <a href="https://www.youtube.com/c/AppsCodeInc" target="_blank" class="is-flex is-gap-4">
+                                                <span>Demos</span>
+                                                <span class="is-flex width-12">
+                                                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                                      <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                                   </svg>
+                                                </span>
+                                             </a>
+                                          </li>
+                                       </ul>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                        <li class="nav-item"><a href="/webinar" class="link">Webinar <span class="whats-new is-block">New</span></a></li>
+                     </ul>
+                     <script type="text/javascript">(function(){var e=window.XMLHttpRequest?new XMLHttpRequest:new ActiveXObject("Microsoft.XMLHTTP");e.onreadystatechange=function(){if(e.readyState===4&&e.status===200){var t=JSON.parse(e.responseText);if(t.schedules){let e=new Date(t.schedules[0]).getTime(),n=(new Date).getTime(),s=parseInt((e-n)/1e3);s>=0&&document.querySelector(".whats-new").classList.add("is-block")}}},e.open("GET","https://x.appscode.com/_/webinars/"),e.send()})()</script>
+                     <div class="navbar-right-group">
+                        <ul>
+                           <li class="nav-item"><a href="/partner/" class="link">Partner</a></li>
+                           <li class="nav-item"><a href="https://support.appscode.com" class="link">Support</a></li>
+                        </ul>
+                        <div class="buttons">
+                           <iframe src="/embed/?color=00a651" frameborder="0" scrolling="no" class="embeded-console-button" title="embeded-console-button"></iframe>
+                           <a href="https://appscode.com/contact/" class="button ac-button is-primary">
+                              <span class="icon">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.068.157 2.148.279 3.238.364.466.037.893.281 1.153.671L12 21l2.652-3.978c.26-.39.687-.634 1.153-.67 1.09-.086 2.17-.208 3.238-.365 1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394.0 0012 3c-2.392.0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"></path>
+                                 </svg>
+                              </span>
+                              <span>CONTACT SALES</span>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <script type="text/javascript">const navbarRightAll=document.querySelectorAll(".navbar-right"),navbarBurgerAll=document.querySelectorAll(".navbar-burger");Array.from(navbarBurgerAll).forEach((e,t)=>{e.addEventListener("click",function(){Array.from(navbarRightAll).forEach((e,n)=>{t!==n&&navbarRightAll[n].classList.contains("is-visible")&&(navbarRightAll[n].classList.remove("is-visible"),navbarBurgerAll[n].classList.remove("is-active"))});const e=document.querySelector(".modal-backdrop");e&&e.classList.contains("is-show")&&e.classList.remove("is-show");const n=document.querySelector(".nav-item.is-active");n&&n.classList.contains("is-active")&&n.classList.remove("is-active"),navbarRightAll[t].classList.toggle("is-visible")})})</script>
+      </div>
+   </div>
+</header>
+
 <div class="container">
     <form action="/bind" method="post" class="form-wrapper">
         <div class="form-inner">
