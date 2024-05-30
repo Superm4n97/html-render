@@ -1,6 +1,4 @@
 // sass --watch ./pkg/template/static/assets/styles/main.scss:./pkg/template/static/assets/styles/main.css
 
 @import './base/all.scss';
-body {
-    background-color: #333;
-}
+@import './components/all.scss';

@@ -1,10 +1,18 @@
 :root {
     /* colors */
-    --clr-primary: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-light));
-    --clr-secondary: hsl(var(--secondary-hue), var(--secondary-saturation), var(--secondary-light));
+    --ac-primary: hsl(var(--primary-hue), var(--primary-saturation), var(--primary-light));
+    --ac-secondary: hsl(var(--secondary-hue), var(--secondary-saturation), var(--secondary-light));
 
-    --clr-black: hsl(var(--black));
-    --clr-white: hsl(var(--white));
+    --ac-black: hsl(var(--black));
+    --ac-white: hsl(var(--white));
 
-    --clr-gray-50: hsl(var(--white), 50%);
+    --ac-gray-50: hsl(var(--white), 50%);
+
+    --ac-text: hsl(var(--secondary-hue), 10%, 35%);
+    --ac-heading: hsl(var(--secondary-hue), 10%, 10%);
+    --ac-label: hsl(var(--secondary-hue), 20%, 30%);
+    --ac-link: hsl(var(--secondary-hue), 40%, 20%);
+    --ac-border-light: hsl(var(--secondary-hue), 40%, 95%);
+    --ac-border: hsl(var(--secondary-hue), 10%, 90%);
+    --ac-border-dark: hsl(var(--secondary-hue), 10%, 80%);
 }
