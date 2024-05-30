@@ -1,4 +1,4 @@
 // sass --watch ./pkg/template/static/assets/styles/main.scss:./pkg/template/static/assets/styles/main.css
-
+@import './../../../../../node_modules/bulma/bulma.sass';
 @import './base/all.scss';
 @import './components/all.scss';
