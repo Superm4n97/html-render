@@ -1,0 +1,94 @@
+// Typography
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+// @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+$ac-font-heading: "Roboto", sans-serif;
+$ac-font-paragraph: "Roboto", sans-serif;
+// $ac-font-inter: "Inter", sans-serif;
+
+html,
+body {
+  background-color: $ac-bg;
+  font-family: $ac-font-paragraph;
+  font-weight: 400;
+  font-size: 1rem;
+  color: $ac-color-text;
+  scroll-behavior: smooth;
+}
+
+p {
+  font-size: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $ac-font-heading;
+  font-style: normal;
+  font-weight: 500;
+  color: $ac-color-heading;
+  line-height: 130%;
+}
+
+h1 {
+  font-size: 60px;
+  letter-spacing: -0.5px;
+}
+
+h2 {
+  font-size: 48px;
+  letter-spacing: -0.57px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+h4 {
+  font-size: 24px;
+  letter-spacing: -0.25px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px;
+  letter-spacing: -0.15px;
+}
+
+a {
+  font-family: $ac-font-paragraph;
+  color: $ac-primary;
+}
+
+hr {
+  background-color: $ac-white-light;
+  border: none;
+  display: block;
+  height: 1px;
+  margin: 16px 0;
+}
+
+strong {
+  color: $ac-color-heading;
+}
+
+.is-gradient {
+  background: linear-gradient(
+    -45deg,
+    $ac-primary,
+    #940148,
+    #4c346f,
+    $ac-primary
+  );
+  background-size: 300% 300%;
+  animation: gradient 5s ease infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

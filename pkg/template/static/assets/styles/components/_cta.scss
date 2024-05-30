@@ -1,0 +1,101 @@
+.cta-area {
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+
+  .cta-area-inner {
+    padding: 20px 50px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    background-color: #F4FBF7;
+    border: 1px solid $ac-primary;
+    position: relative;
+    z-index: 1;
+    &:after {
+      position: absolute;
+      content: "";
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: -1;
+      @extend .decorative-el-large;
+    }
+    h3 {
+      margin-bottom: 1rem;
+      text-wrap: balance;
+    }
+    p{
+      text-wrap: balance;
+    }
+  }
+}
+
+/****************************************
+Responsive Classes
+*****************************************/
+// Extra small devices (portrait phones, less than 576px)
+@include mobile {
+  .cta-area {
+    .cta-area-inner {
+      height: auto !important;
+      padding: 32px 16px;
+
+      .buttons {
+        .button {
+          &.ac-button {
+            letter-spacing: 0;
+            padding: 0.5rem 1rem;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet-only {
+  .cta-area {
+    .cta-area-inner {
+      padding: 20px;
+      h3 {
+        font-size: 28px;
+      }
+    }
+  }
+}
+
+@include desktop-only {
+  .cta-area {
+    .cta-area-inner {
+      padding: 20px;
+      h3 {
+        font-size: 28px;
+      }
+    }
+  }
+}
+
+@include widescreen-only {
+  .cta-area {
+    .cta-area-inner {
+      padding: 30px;
+      h3 {
+        font-size: 28px;
+      }
+    }
+  }
+}
+
+@include fullhd {
+  .cta-area {
+    .cta-area-inner {
+      padding: 30px;
+      h3 {
+        font-size: 28px;
+      }
+    }
+  }
+}
