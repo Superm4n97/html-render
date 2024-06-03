@@ -2,7 +2,7 @@ const fs = require('fs');
 const postcss = require('postcss');
 const purgecss = require('@fullhuman/postcss-purgecss');
 
-const cssFilePath = '/Users/mohin/go/src/github.com/html-render/pkg/template/static/assets/styles/main.scss'; // Path to the CSS file
+const cssFilePath = '/Users/mohin/go/src/github.com/html-render/pkg/template/static/assets/styles/main.css'; // Path to the CSS file
 
 // Read the CSS file
 fs.readFile(cssFilePath, 'utf8', (err, css) => {
