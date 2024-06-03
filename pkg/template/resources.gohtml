@@ -26,49 +26,41 @@
                 align-items: center;
                 margin-bottom: 8px;
                 height: auto;
+                background-color: #EDF5FD;
+                border: 1px solid #1870BC;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
                 img {
-                    width: 52px;
+                    width: 24px;
                     height: auto;
                 }
             }
-            .form-inner {
-                display: grid;
-                grid-template-columns: repeat(auto-fill, minmax(min(250px, 100%), 1fr));
-                align-content: center;
-                justify-content: center;
-                gap: 16px;
-                margin-bottom: 32px;
-            }
+         ul {
+            margin-bottom: 8px;
+            
         }
 
-        .form-inner input[type="checkbox"]:checked + label.card{
+        .form-inner input[type="checkbox"]:checked + label.single-card{
             border: 2px solid #4D4DCB;
         }
 
-        .form-inner input[type="checkbox"]:disabled + label.card{
+        .form-inner input[type="checkbox"]:disabled + label.single-card{
             cursor: not-allowed;
             opacity: 0.6;
         }
-        .card {
+        .single-card {
             cursor: pointer;
-            border: 2px solid transparent;
+            border: 2px solid #e7e7e7;
             transition: 0.3s ease-in-out;
+            display: block;
+            padding: 16px;
+            border-radius: 4px;
         }
-        .card:hover {
+        .single-card:hover {
             border: 2px solid #e7e7e7;
         }
-        ul {
-            margin-bottom: 8px;
-            gap: 4px;
-            li{
-                line-height: 120%;
-                text-align: center;
-                span {
-                    line-break: anywhere;
-                    font-size: 15px;
-                }
-            }
-        }
+      
        
     </style>
 </head>
@@ -107,7 +99,7 @@
                                  </button>
                                  <div class="product-menu">
                                     <a class="single-product is-active" href="https://kubedb.com">
-                                       <div class="product-logo"><img src="/assets/images/products/kubedb/kubedb-icon.svg" alt="KubeDB" loading="lazy"></div>
+                                       <div class="product-logo"><img src="https://cdn.appscode.com/images/products/kubedb/kubedb-icon.svg" alt="KubeDB"></div>
                                        <div class="product-info">
                                           <h2 class="is-size-6">KubeDB</h2>
                                           <p>Run Production-Grade Databases on Kubernetes</p>
@@ -121,7 +113,7 @@
                                        </div>
                                     </a>
                                     <a class="single-product" href="https://stash.run">
-                                       <div class="product-logo"><img src="/assets/images/products/stash/stash-icon.svg" alt="Stash" loading="lazy"></div>
+                                       <div class="product-logo"><img src="https://cdn.appscode.com/images/products/stash/stash-icon.svg" alt="Stash"></div>
                                        <div class="product-info">
                                           <h2 class="is-size-6">Stash</h2>
                                           <p>Backup and Recovery Solution for Kubernetes</p>
@@ -135,7 +127,7 @@
                                        </div>
                                     </a>
                                     <a class="single-product" href="https://kubevault.com">
-                                       <div class="product-logo"><img src="/assets/images/products/kubevault/kubevault-icon.svg" alt="KubeVault" loading="lazy"></div>
+                                       <div class="product-logo"><img src="https://cdn.appscode.com/images/products/kubevault/kubevault-icon.svg" alt="KubeVault"></div>
                                        <div class="product-info">
                                           <h2 class="is-size-6">KubeVault</h2>
                                           <p>Run Production-Grade Vault on Kubernetes</p>
@@ -149,7 +141,7 @@
                                        </div>
                                     </a>
                                     <a class="single-product" href="https://voyagermesh.com">
-                                       <div class="product-logo"><img src="/assets/images/products/voyager/voyager-icon.svg" alt="Voyager" loading="lazy"></div>
+                                       <div class="product-logo"><img src="https://cdn.appscode.com/images/products/voyager/voyager-icon.svg" alt="Voyager"></div>
                                        <div class="product-info">
                                           <h2 class="is-size-6">Voyager</h2>
                                           <p>Secure Ingress Controller for Kubernetes</p>
@@ -163,7 +155,7 @@
                                        </div>
                                     </a>
                                     <a class="single-product" href="https://config-syncer.com">
-                                       <div class="product-logo"><img src="/assets/images/products/configsyncer/configsyncer-512x512.svg" alt="configsyncer" loading="lazy"></div>
+                                       <div class="product-logo"><img src="https://cdn.appscode.com/images/products/configsyncer/configsyncer-512x512.svg" alt="configsyncer"></div>
                                        <div class="product-info">
                                           <h2 class="is-size-6">ConfigSyncer</h2>
                                           <p>Kubernetes Configuration Syncer</p>
@@ -177,7 +169,7 @@
                                        </div>
                                     </a>
                                     <a class="single-product" href="https://kubeguard.dev">
-                                       <div class="product-logo"><img src="/assets/images/products/guard/guard-512x512.svg" alt="Guard" loading="lazy"></div>
+                                       <div class="product-logo"><img src="https://cdn.appscode.com/images/products/guard/guard-512x512.svg" alt="Guard"></div>
                                        <div class="product-info">
                                           <h2 class="is-size-6">Guard</h2>
                                           <p>Kubernetes Authentication WebHook Server</p>
@@ -192,136 +184,136 @@
                                     </a>
                                  </div>
                                  <div class="product-description is-block">
-                                    <div class="brand"><img src="/assets/images/products/kubedb/kubedb.svg" alt="KubeDB" loading="lazy" height="30" width="auto"></div>
+                                    <div class="brand"><img src="https://cdn.appscode.com/images/products/kubedb/kubedb.svg" alt="KubeDB" height="30" width="auto"></div>
                                     <p>KubeDB simplifies Provisioning, Upgrading, Scaling, Volume Expansion, Monitor, Backup, Restore for various Databases in Kubernetes on any Public &amp; Private Cloud</p>
                                     <ul class="features">
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Lower administrative burden</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Native Kubernetes Support</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Performance</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Availability and durability</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Manageability</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Cost-effectiveness</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Security</span>
                                        </li>
                                     </ul>
                                  </div>
                                  <div class="product-description">
-                                    <div class="brand"><img src="/assets/images/products/stash/stash.png" alt="Stash" loading="lazy" height="30" width="auto"></div>
+                                    <div class="brand"><img src="https://cdn.appscode.com/images/products/stash/stash.png" alt="Stash" height="30" width="auto"></div>
                                     <p>A complete Kubernetes native disaster recovery solution for backup and restore your volumes and databases in Kubernetes on any public and private clouds.</p>
                                     <ul class="features">
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Declarative API</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Backup Kubernetes Volumes</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Backup Database</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Multiple Storage Support</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Deduplication</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Data Encryption</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Volume Snapshot</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Policy Based Backup</span>
                                        </li>
                                     </ul>
                                  </div>
                                  <div class="product-description">
-                                    <div class="brand"><img src="/assets/images/products/kubevault/kubevault.png" alt="KubeVault" loading="lazy"></div>
+                                    <div class="brand"><img src="https://cdn.appscode.com/images/products/kubevault/kubevault.png" alt="KubeVault"></div>
                                     <p>KubeVault is a Git-Ops ready, production-grade solution for deploying and configuring Hashicorp's Vault on Kubernetes.</p>
                                     <ul class="features">
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Vault Kubernetes Deployment</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Auto Initialization &amp; Unsealing</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Vault Backup &amp; Restore</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Consume KubeVault Secrets with CSI</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Manage DB Users Privileges</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Storage Backend</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Authentication Method</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Database Secret Engine</span>
                                        </li>
                                     </ul>
                                  </div>
                                  <div class="product-description">
-                                    <div class="brand"><img src="/assets/images/products/voyager/voyager.png" alt="Voyager" loading="lazy"></div>
+                                    <div class="brand"><img src="https://cdn.appscode.com/images/products/voyager/voyager.png" alt="Voyager"></div>
                                     <p>Secure Ingress Controller for Kubernetes</p>
                                     <ul class="features">
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>HTTP &amp; TCP</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>SSL</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Platform support</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>HAProxy</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Prometheus</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Let's Encrypt</span>
                                        </li>
                                     </ul>
                                  </div>
                                  <div class="product-description">
-                                    <div class="brand"><img src="/assets/images/products/configsyncer/configsyncer.png" alt="configsyncer" loading="lazy"></div>
+                                    <div class="brand"><img src="https://cdn.appscode.com/images/products/configsyncer/configsyncer.png" alt="configsyncer"></div>
                                     <p>Kubernetes Configuration Syncer</p>
                                     <ul class="features">
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Configuration Syncer</span>
                                        </li>
                                     </ul>
                                  </div>
                                  <div class="product-description">
-                                    <div class="brand"><img src="/assets/images/products/guard/guard.png" alt="Guard" loading="lazy"></div>
+                                    <div class="brand"><img src="https://cdn.appscode.com/images/products/guard/guard.png" alt="Guard"></div>
                                     <p>Kubernetes Authentication WebHook Server</p>
                                     <ul class="features">
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>Identity Providers</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>CLI</span>
                                        </li>
-                                       <li><span class="icon"><img src="/assets/images/products/appscode/icons/global/check-box.webp" alt="check-box" loading="lazy"></span>
+                                       <li><span class="icon"><img src="https://cdn.appscode.com/images/products/appscode/icons/global/check-box.webp" alt="check-box"></span>
                                           <span>RBAC</span>
                                        </li>
                                     </ul>
@@ -411,7 +403,7 @@
                            <li class="nav-item"><a href="https://support.appscode.com" class="link">Support</a></li>
                         </ul>
                         <div class="buttons">
-                           <iframe src="/embed/?color=00a651" frameborder="0" scrolling="no" class="embeded-console-button" title="embeded-console-button"></iframe>
+                            <iframe src="https://appscode.com/embed/?color=00a651" frameborder="0" scrolling="no" style="height: 40px; margin-bottom: 8px; width: 185px;  overflow: hidden;" title="Console"></iframe>
                            <a href="https://appscode.com/contact/" class="button ac-button is-primary">
                               <span class="icon">
                                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
@@ -432,32 +424,408 @@
 </header>
 
 <section class="section-padding pt-100">
-<div class="container">
-    <form action="/bind" method="post" class="form-wrapper">
-        <div class="form-inner">
-            <input type="hidden" id="sessionID" name="sessionID" value="{{.SessionID}}">
-            {{$sid := .SessionID}}
-            {{ range $idx, $crd := .CRDs}}
-                {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
-                <input type="checkbox" class="is-hidden" id="crd_{{$idx}}" name="crd" value="{{$gr}}" {{if $crd.Bound}} disabled{{end}}>
-                <label for="crd_{{$idx}}" class="card p-5">
-                    <div class="icon">
-                        <img src="{{$crd.Icon}}"/>
-                    </div>
-                    <h4 class="is-size-4 has-text-centered has-text-weight-semibold is-capitalized">{{$crd.Kind}}</h4>
-                    <ul class="is-flex is-flex-direction-column is-align-items-center">
-                        <li class="list-group-item"><span class="has-text-weight-medium">Group:</span> <span>{{$crd.Group}}</span></li>
-                        <li class="list-group-item"><span class="has-text-weight-medium">Scoped:</span> <span>{{$crd.Scoped}}</span></li>
-                    </ul>
-                </label>
-            {{end}}
-        </div>
-        <div class="is-fullwidth footer-button is-flex is-justify-content-center">
-            <input type="submit" value="BIND DATABASES" class="button ac-button is-primary"/>
-        </div>
-    </form>
-</div>
+   <div class="container">
+      <form action="/bind" method="post" class="form-wrapper">
+         <div class="form-inner mb-32">
+               <input type="hidden" id="sessionID" name="sessionID" value="{{.SessionID}}">
+               {{$sid := .SessionID}}
+               <div class="columns">
+               {{ range $idx, $crd := .CRDs}}
+                  {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
+               
+                     <div class="column is-3">
+                     <input type="checkbox" class="is-hidden" id="crd_{{$idx}}" name="crd" value="{{$gr}}" {{if $crd.Bound}} disabled{{end}}>
+                     <label for="crd_{{$idx}}" class="single-card">
+                        <div class="icon">
+                              <img src="{{$crd.Icon}}"/>
+                        </div>
+                        <h4 class="is-size-6 has-text-weight-semibold is-capitalized">{{$crd.Kind}}</h4>
+                        <ul class="is-flex is-flex-direction-column">
+                              <li class="list-group-item"><span class="has-text-weight-medium">Group:</span> <span>{{$crd.Group}}</span></li>
+                              <li class="list-group-item"><span class="has-text-weight-medium">Scoped:</span> <span>{{$crd.Scoped}}</span></li>
+                        </ul>
+                     </label>
+                     </div>
+            
+               {{end}}
+               </div>
+         </div>
+         <div class="is-fullwidth footer-button is-flex is-justify-content-center">
+               <input type="submit" value="BIND DATABASES" class="button ac-button is-primary"/>
+         </div>
+      </form>
+   </div>
 </section>
 
+
+<footer class="footer-area dark-bg">
+   <div class="footer-top">
+      <div class="container">
+         <div class="columns is-mobile is-multiline is-variable is-1-mobile">
+            <div class="column is-full-mobile is-one-third-desktop is-one-third-widescreen is-one-third-tablet mb-15" data-aos="fade-up">
+               <div class="single-footer-widget">
+                  <div class="footer-logo"><a href="https://appscode.com"><img src="https://cdn.appscode.com/images/products/appscode/appscode-white.svg" alt="AppsCode" class="img"></a></div>
+                  <div class="subscription-form">
+                     <form method="post" action="https://listmonk.appscode.com/subscription/form" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="navbar-form" target="_blank" novalidate="">
+                        <label for="email">Subscribe to Our Newsletter</label>
+                        <p class="spam-message">No spam, we promise. Your mail address is secure</p>
+                        <div class="field has-addons">
+                           <div class="control"><input type="hidden" id="afbbc" name="l" value="d6a7b3b4-15ec-419e-beaf-a503d0bc1b41">
+                              <input class="input" name="email" id="mce-EMAIL" type="email" placeholder="Your work email address" required="">
+                              <button id="mc-embedded-subscribe" type="submit" name="subscribe" class="button" aria-label="Subscribe Button">
+                              <i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                           </div>
+                        </div>
+                     </form>
+                  </div>
+                  <div class="contact-information">
+                     <p class="has-text-weight-semibold">Have any Inquiry?</p>
+                     <ul class="all-contact-info">
+                        <li><a href="callto:+1%28650%29241-8486"><span><i class="fa fa-phone" aria-hidden="true"></i></span>+1(650)241-8486</a></li>
+                        <li><a href="mailto:support@appscode.com"><span><i class="fa fa-envelope-o" aria-hidden="true"></i></span>support@appscode.com</a></li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="column is-half-mobile" data-aos="fade-up" data-aos-duration="500">
+               <div class="single-footer-widget">
+                  <div class="footer-menu is-info">
+                     <label>Products</label>
+                     <ul class="footer-link">
+                        <li>
+                           <a href="https://kubedb.com" class="is-flex is-gap-4">
+                              <span>KubeDB</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://stash.run" class="is-flex is-gap-4">
+                              <span>Stash</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://kubevault.com" class="is-flex is-gap-4">
+                              <span>KubeVault</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://voyagermesh.com" class="is-flex is-gap-4">
+                              <span>Voyager</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25.0v11.25"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="column is-half-mobile" data-aos="fade-up" data-aos-duration="600">
+               <div class="single-footer-widget">
+                  <div class="footer-menu is-success">
+                     <label>Services</label>
+                     <ul class="footer-link">
+                        <li>
+                           <a href="https://appscode.com/consulting/" class="is-flex is-gap-4">
+                              <span>Consulting</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://appscode.com/training/" class="is-flex is-gap-4">
+                              <span>Training</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://appscode.com/support/" class="is-flex is-gap-4">
+                              <span>Support</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="column is-half-mobile" data-aos="fade-up" data-aos-duration="700">
+               <div class="single-footer-widget">
+                  <div class="footer-menu is-warning">
+                     <label>Company</label>
+                     <ul class="footer-link">
+                        <li>
+                           <a href="https://appscode.com/about/" class="is-flex is-gap-4">
+                              <span>About Us</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://appscode.com/blog" class="is-flex is-gap-4">
+                              <span>Blog</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://appscode.com/contact/" class="is-flex is-gap-4">
+                              <span>Contact Us</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+            <div class="column is-half-mobile" data-aos="fade-up" data-aos-duration="800">
+               <div class="single-footer-widget">
+                  <div class="footer-menu is-danger">
+                     <label>Legal</label>
+                     <ul class="footer-link">
+                        <li>
+                           <a href="https://appscode.com/legal/tos/" class="is-flex is-gap-4">
+                              <span>Terms of Service</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://appscode.com/legal/privacy-policy/" class="is-flex is-gap-4">
+                              <span>Privacy Policy</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://appscode.com/legal/security/" class="is-flex is-gap-4">
+                              <span>Security</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                        <li>
+                           <a href="https://appscode.com/legal/sla/" class="is-flex is-gap-4">
+                              <span>Service Level Agreement</span>
+                              <span class="is-flex width-12">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentcolor" class="w-6 h-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"></path>
+                                 </svg>
+                              </span>
+                           </a>
+                        </li>
+                     </ul>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+   <div class="footer-bottom dark-bg">
+      <div class="container">
+         <div class="columns is-vcentered">
+            <div class="column is-4 has-text-centered-mobile has-text-left-tablet is-paddingless">
+               <p>© 2024 AppsCode Inc. All rights reserved.</p>
+            </div>
+            <div class="column is-4 is-mobile has-text-centered-touch has-text-centered-desktop is-paddingless">
+               <div class="footer-inline-link"><a href="https://appscode.com/legal/privacy-policy/">Privacy Policy</a>
+                  <a href="https://appscode.com/legal/tos/">Terms of Service</a>
+                  <a href="https://icons8.com/" target="_blank">Icons by Icons8</a>
+               </div>
+            </div>
+            <div class="column is-4 has-text-centered-mobile has-text-right-tablet is-paddingless">
+               <div class="socail-link-inline">
+                  <ul>
+                     <li>
+                        <a href="https://x.com/AppsCodeHQ" title="https://x.com/AppsCodeHQ">
+                           <i class="fa" aria-hidden="true">
+                              <svg xmlns="http://www.w3.org/2000/svg" height="12" width="12" viewBox="0 0 512 512">
+                                 <path fill="currentcolor" d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+                              </svg>
+                           </i>
+                        </a>
+                     </li>
+                     <li><a href="https://www.linkedin.com/company/appscode" title="https://www.linkedin.com/company/appscode"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                     <li><a href="https://www.facebook.com/appscode" title="https://www.facebook.com/appscode"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                     <li><a href="https://www.youtube.com/c/AppsCodeInc" title="https://www.youtube.com/c/AppsCodeInc"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                  </ul>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</footer>
+<div class="modal-backdrop"><span class=""></span></div>
+
+<script type="text/javascript">
+// navbar area JS v.2022 start
+const navItems = document.querySelectorAll(".navbar-appscode .nav-item");
+
+navItems.forEach(navItem => {
+  const item = navItem.querySelector('.link');
+  item.addEventListener('click', function (el) {
+
+    // to remove active class from previously selected navItem
+    const selectedNav = document.querySelector(".nav-item.is-active");
+    if (selectedNav && selectedNav !== item.parentElement) {
+      selectedNav.classList.toggle('is-active')
+    }
+
+    // handle selected navItem class
+    const hasActiveClass = navItem.classList.contains("is-active");
+    navItem.classList.toggle('is-active')
+
+    // handle background dark-shadow of navItem
+    const darkBodyEl = document.querySelector(".modal-backdrop");
+
+    function handleDarkBodyClickEvent(el) {
+      el.target.classList.remove('is-show')
+      const selectedNavItem = document.querySelector(".nav-item.is-active");
+      selectedNavItem ? selectedNavItem.classList.toggle('is-active') : null;
+    }
+
+    if (hasActiveClass && darkBodyEl.classList.contains("is-show")) {
+      darkBodyEl.classList.toggle("is-show");
+      darkBodyEl.removeEventListener('click', handleDarkBodyClickEvent);
+    } else if (!hasActiveClass && !darkBodyEl.classList.contains("is-show") && !!navItem.querySelector('.mega-menu-wrapper')) {
+      darkBodyEl.classList.toggle("is-show");
+      darkBodyEl.addEventListener('click', handleDarkBodyClickEvent);
+    }
+  })
+})
+
+// mega menu active class
+var navbarItems = document.querySelectorAll(".navbar-item");
+navbarItems.forEach((navbarItem) => {
+  navbarItem.addEventListener("click", function () {
+    var megamenues = document.querySelectorAll(
+      ".navbar-item > .ac-megamenu , .navbar-item > .ac-dropdown"
+    );
+    // remove is-active class from all the megamenus except the navbar item that was clicked
+    megamenues.forEach((megamenu) => {
+      // toggle classes
+      if (megamenu.parentElement === navbarItem)
+        megamenu.classList.toggle("is-active");
+      else megamenu.classList.remove("is-active");
+    });
+  });
+});
+
+// Responsive menu back button
+const backButtonAll = document.querySelectorAll(".back-button");
+// create click event for all back button	
+Array.from(backButtonAll).forEach((el) => {
+  el.addEventListener("click", () => {
+    // closeset nav item ancestor	
+    const activeNavElement = el.closest(".nav-item.is-active");
+    if (activeNavElement) activeNavElement.classList.remove("is-active");
+  })
+});
+// navbar area JS v.2022 end
+
+// responsive navbar area
+// elements selector where toggle class will be added
+const selctorsForResponsiveMenu = [
+  ".left-sidebar-wrapper",
+  ".navbar-appscode.documentation-menu > .navbar-right",
+  ".right-sidebar",
+  ".sidebar-search-area"
+];
+
+// toggle classes for responsive buttons
+const toggleClassesForResponsiveMenu = ["is-block", "is-visible", "is-block", "right-0"];
+// All responsive menu buttons
+const responsiveMenus = document.querySelectorAll(".responsive-menu > .is-flex.is-justify-content-space-between > .button");
+// iterate thorugh the menus to handle click event
+Array.from(responsiveMenus).forEach((menu, idx) => {
+  menu.addEventListener("click", function () {
+    const toggleElement = document.querySelector(selctorsForResponsiveMenu[idx]);
+    if (toggleElement) {
+      // toggle active menu class
+      toggleElement.classList.toggle(toggleClassesForResponsiveMenu[idx]);
+      if (toggleElement.classList.contains(toggleClassesForResponsiveMenu[idx])) {
+        const backButtonElement = toggleElement.querySelector(".back-button");
+
+        function handleClick() {
+          toggleElement.classList.remove(toggleClassesForResponsiveMenu[idx]);
+          // remove event listener on back button click
+          backButtonElement.removeEventListener("click", handleClick);
+        }
+
+        backButtonElement.addEventListener("click", handleClick);
+
+      }
+    }
+
+    const modalBackdropElement = document.querySelector(".modal-backdrop.is-show");
+    // if modal backdrop element is visible then hide it
+    if (modalBackdropElement) {
+      modalBackdropElement.classList.remove("is-show")
+    }
+
+    const navItem = document.querySelector(".nav-item.is-active");
+    // if modal backdrop element is visible then hide it
+    if (navItem) {
+      navItem.classList.remove("is-active")
+    }
+
+    // remove previous active menu
+    selctorsForResponsiveMenu.forEach((el, selectorIdx) => {
+      if (selectorIdx !== idx) {
+        const selectorElement = document.querySelector(selctorsForResponsiveMenu[selectorIdx]);
+        if (selectorElement.classList.contains(toggleClassesForResponsiveMenu[selectorIdx])) {
+          selectorElement.classList.remove(toggleClassesForResponsiveMenu[selectorIdx])
+        }
+      }
+    });
+  });
+});
+
+</script>
 </body>
 </html>
