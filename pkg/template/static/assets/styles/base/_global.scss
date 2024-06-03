@@ -506,6 +506,68 @@
     gap: #{$i}px;
   }
 }
+// dark background
+.dark-bg {
+  background-color: #000a05;
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  strong,
+  label {
+    color: #e6e7e6;
+  }
+  p {
+    color: #d4d6d5;
+  }
+  .single-feature {
+    &.card-view {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background-color: #000a05;
+    }
+    .icon {
+      background-color: rgba(255, 255, 255, 0.1);
+      border: none;
+    }
+    .content {
+      p {
+        color: #d4d6d5;
+      }
+      a {
+        transition: 0.3s ease-in-out;
+        font-weight: 500;
+        &:hover {
+          color: $ac-primary;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+  .footer-top {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .footer-inline-link,
+  .subscription-form label,
+  .all-contact-info li a,
+  p.spam-message {
+    color: #adb2b0;
+    a {
+      color: #adb2b0;
+      transition: 0.3s ease-in-out;
+      &:hover {
+        color: $ac-primary;
+      }
+    }
+  }
+}
+.decorative-el-large {
+  background-image: url("../images/shape/decorative-el-large-2.png");
+  background-size: cover;
+  background-position: center;
+}
+
 /****************************************
 Responsive Classes
 *****************************************/
