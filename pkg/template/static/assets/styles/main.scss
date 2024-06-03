@@ -1,48 +1,121 @@
-// appsCode.com Sass Template
-// Author: AppsCode
-// Version: 0.0.1
+
+@charset "utf-8";
+// customize bulma css
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/base/utilities/colors";
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/base/utilities/customize-bulma";
+
+// Third party CSS
 @import "../../../../../node_modules/bulma/bulma.sass";
 
-//BASE - Base styles, variables, mixins
-@import "base/utilities/_initial-variable";
-@import "base/utilities/_default";
-@import "base/utilities/_themes";
-@import "base/utilities/_typography";
+
+// BASE
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/base/utilities/all";
 
 
-// mixins
-@import "mixins/_mixin";
+// COMPONENTS
+// @import "@/components/vue-components/styles/components/all";
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/button";
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/navbar/all";
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/sidebar/all";
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/header/header";
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/header/header-item";
 
-//BASE - Base styles, variables, mixins
-@import "base/_global";
-@import "base/_video-palyer";
-@import "base/_innerpage";
-// @import "base/_contactus-update";
-@import "base/_webinar";
-@import "base/_videos-gallery";
+.sidebar-collapsed:not(.is-hoverable) .ac-left-sidebar-wrapper {
+    .brand-logo {
+      display: none !important;
+    }
+  
+    .sidebar-header {
+      justify-content: center;
+      padding: 10px;
+  
+      .hamburger-icon {
+        margin-right: 0 !important;
+      }
+    }
+  }
+  
+  .sidebar-header {
+    background-color: transparent;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    height: 50px;
+    display: flex;
+    // justify-content: space-between;
+    padding: 8px 20px;
+    align-items: center;
+  
+    .hamburger-icon {
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+  
+      &::after {
+        position: absolute;
+        content: "";
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.3s ease-in-out;
+      }
+  
+      &:hover {
+        &::after {
+          opacity: 1;
+          visibility: visible;
+        }
+      }
+    }
+  
+    .brand-logo {
+      display: flex;
+      align-items: center;
+  
+      img {
+        max-height: 30px;
+      }
+    }
+  }
 
+.ac-left-sidebar {
+    .menu-list.ac-menu-list {
+        height: calc(100vh - 74px);
+    }
+}
 
-// Components 
-@import "components/_navbar";
-@import "components/_preloader";
-@import "components/_cookie";
-@import "components/_tabs";
-@import "components/_button";
-// @import "components/_product-hero-area";
-@import "components/_testimonial";
-@import "components/_features";
-@import "components/_ac-accordion";
-@import "components/_cta";
-@import "components/_legal";
-@import "components/_back-to-top";
-@import "components/_footer";
+.sidebar-footer{
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    .back-button {
+        cursor: pointer;
+    }
+}
 
-// Layouts 
-@import "layouts/_documentation";
-@import "layouts/_features-plan";
+  // default layout css
+.ac-system-body {
+    display: grid;
+    grid-gap: 0px;
+    grid-template-columns: 250px calc(100% - 250px);
+    padding-top: 50px;
+    transition: 0.3s ease-in-out;
+  
+    &.is-fullwidth {
+      grid-template-columns: auto !important;
+    }
+  }
+  // sidebar collapsed
+  .sidebar-collapsed {
+    .ac-system-body {
+      grid-template-columns: 60px calc(100% - 60px);
+    }
+  }
 
-// Pages  
-
-
-//Responsive SCSS
-@import "layouts/_responsive";
