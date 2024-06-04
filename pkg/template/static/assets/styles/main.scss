@@ -166,7 +166,7 @@
 }
 
 .kube-bind-inner input[type="checkbox"]:checked + label.single-card{
-    border: 2px solid #4D4DCB;
+    border: 2px solid $ac-primary;
 }
 
 .kube-bind-inner input[type="checkbox"]:disabled + label.single-card{
