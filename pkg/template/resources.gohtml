@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'">
     
     <style>
-        .form-wrapper {
+        .kube-bind-form {
             .icon {
                 width: 100%;
                 display: flex;
@@ -34,16 +34,30 @@
                     height: auto;
                 }
             }
+
+            td{
+               vertical-align: middle;
+
+               .icon {
+                  width: 36px;
+                  height: 36px;
+                  margin-bottom: 0;
+                  img {
+                     width: 18px;
+                     height: auto;
+                  }
+               }
+            }
          ul {
             margin-bottom: 8px;
             
         }
 
-        .form-inner input[type="checkbox"]:checked + label.single-card{
+        .kube-bind-inner input[type="checkbox"]:checked + label.single-card{
             border: 2px solid #4D4DCB;
         }
 
-        .form-inner input[type="checkbox"]:disabled + label.single-card{
+        .kube-bind-inner input[type="checkbox"]:disabled + label.single-card{
             cursor: not-allowed;
             opacity: 0.6;
         }
@@ -151,7 +165,7 @@
                         <path d="M3 4.5L7.5 4.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                      </svg>
                   </div>
-               <a href="/" class="is-flex brand-logo"><img src="https://cdn.appscode.com/images/products/appscode/appscode-white.svg" alt="brand-logo" class=""></a><span class="brand-tag">kube-bind</span>
+               <a href="/" class="is-flex brand-logo"><img src="https://cdn.appscode.com/images/products/appscode/appscode-green-white.png" alt="brand-logo" class=""></a><span class="brand-tag">kube-bind</span>
                </div>
               
                <ul class="menu-list ac-menu-list" data-testid="cluster-sidebar-menu-list">
@@ -182,59 +196,92 @@
          <!-- left-sidebar menu end -->
       </div>
    </div>
-   <div class="ac-system-content">
-   <div class="inner-header" style="top: 50px;">
-      <div class="is-flex is-justify-content-space-between">
-            <div class="header-items is-flex is-align-items-center">
-               <div class="header-item">
-                  <h4 class="">Bind List</h4>
+   <form action="/bind" method="post" class="ac-system-content kube-bind-form">
+      <div class="inner-header" style="top: 50px;">
+         <div class="is-flex is-justify-content-space-between">
+               <div class="header-items is-flex is-align-items-center">
+                  <div class="header-item">
+                     <h4 class="">Bind List</h4>
+                  </div>
+               </div>
+               <div class="header-items is-flex is-align-items-center">
+                  <input type="submit" value="BIND DATABASES" class="button ac-button is-primary"/>
                </div>
             </div>
-            <div class="header-items is-flex is-align-items-center">
-
+      </div>
+      <div class="p-20">
+         <div class="kube-bind-inner mb-32">
+            <input type="hidden" id="sessionID" name="sessionID" value="{{.SessionID}}">
+            {{$sid := .SessionID}}
+            <div class="columns is-multiline">
+               {{ range $idx, $crd := .CRDs}}
+                  {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
+               
+                     <div class="column is-one-quarter-widescreen is-one-quarter-fullhd is-one-third-desktop is-half-tablet is-full-mobile">
+                     <input type="checkbox" class="is-hidden" id="crd_{{$idx}}" name="crd" value="{{$gr}}" {{if $crd.Bound}} disabled{{end}}>
+                     <label for="crd_{{$idx}}" class="single-card">
+                        <div class="icon">
+                              <img src="{{$crd.Icon}}"/>
+                        </div>
+                        <h4 class="is-size-5 has-text-weight-semibold is-capitalized">{{$crd.Kind}}</h4>
+                        <ul class="is-flex is-flex-direction-column">
+                              <li class="list-group-item"><span class="has-text-black-bis">Group:</span> <span>{{$crd.Group}}</span></li>
+                              <li class="list-group-item"><span class="has-text-black-bis">Scoped:</span> <span>{{$crd.Scoped}}</span></li>
+                        </ul>
+                     </label>
+                     </div>
+            
+               {{end}}
             </div>
          </div>
       </div>
-      <div class="p-20">
-    
-         <form action="/bind" method="post" class="form-wrapper">
-            <div class="form-inner mb-32">
-                  <input type="hidden" id="sessionID" name="sessionID" value="{{.SessionID}}">
-                  {{$sid := .SessionID}}
-                  <div class="columns is-multiline">
-                  {{ range $idx, $crd := .CRDs}}
-                     {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
-                  
-                        <div class="column is-3">
-                        <input type="checkbox" class="is-hidden" id="crd_{{$idx}}" name="crd" value="{{$gr}}" {{if $crd.Bound}} disabled{{end}}>
-                        <label for="crd_{{$idx}}" class="single-card">
-                           <div class="icon">
-                                 <img src="{{$crd.Icon}}"/>
-                           </div>
-                           <h4 class="is-size-6 has-text-weight-semibold is-capitalized">{{$crd.Kind}}</h4>
-                           <ul class="is-flex is-flex-direction-column">
-                                 <li class="list-group-item"><span class="has-text-black-bis">Group:</span> <span>{{$crd.Group}}</span></li>
-                                 <li class="list-group-item"><span class="has-text-black-bis">Scoped:</span> <span>{{$crd.Scoped}}</span></li>
-                           </ul>
-                        </label>
-                        </div>
+
+      <!-- list items start-->
+      <div class="ac-table-container table-container pt-20 pb-20">
+         <table class="table ac-table is-bordered is-fullwidth">
+            <thead>
+               <tr class="is-hoverless" data-testid="ac-table-row">
+                  <th class="width-60">
+                     <input  id="checkbox-primary1" type="checkbox" name="checkbox-primary">
+                  </th>
+                  <th class="sorting">
+                     <span>TITLE</span>
+                  </th>
+                  <th>
+                     <span>GROUP</span>
+                  </th>
+                  <th>
+                     <span>SCOPED</span>
+                  </th>
+               </tr>
                
-                  {{end}}
-                  </div>
-            </div>
-            <div class="is-fullwidth footer-button is-flex is-justify-content-center">
-                  <input type="submit" value="BIND DATABASES" class="button ac-button is-primary"/>
-            </div>
-         </form>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>
+                     <input  id="checkbox-primary1" type="checkbox" name="checkbox-primary">
+                  </td>
+                  <td>
+                     <div class="is-flex is-align-items-center gap-8">
+                        <span class="icon">
+                           <img src="https://cdn.appscode.com/k8s/icons/kubedb.com/mongodbs.svg"/>
+                        </span>
+                        <h6>MongoDB</h6>
+                     </div>
+                  </td>
+                  <td>kubedb.com</td>
+                  <td>Namespaced</td>
+               </tr>
+            
+            </tbody>
+         </table>
       </div>
-   </div>
+      <!-- list items end-->
+
+   </form>
 </div>
 
-<section class="section-padding pt-100">
-   <div class="container">
-      
-   </div>
-</section>
+
 
 </body>
 </html>
