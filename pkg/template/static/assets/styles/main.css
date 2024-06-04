@@ -1967,7 +1967,7 @@ ul {
 }
 
 .kube-bind-inner input[type=checkbox]:checked + label.single-card {
-  border: 2px solid #4D4DCB;
+  border: 2px solid hsl(var(--primary-hue), var(--primary-saturation), var(--primary-light));
 }
 
 .kube-bind-inner input[type=checkbox]:disabled + label.single-card {
