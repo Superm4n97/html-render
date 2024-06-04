@@ -11,7 +11,6 @@
 // BASE
 @import "../../../../../node_modules/@appscode/design-system/vue-components/styles/base/utilities/all";
 
-
 // COMPONENTS
 // @import "@/components/vue-components/styles/components/all";
 @import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/button";
@@ -19,6 +18,7 @@
 @import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/sidebar/all";
 @import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/header/header";
 @import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/header/header-item";
+@import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/table";
 
 .sidebar-collapsed:not(.is-hoverable) .ac-left-sidebar-wrapper {
     .brand-logo {
