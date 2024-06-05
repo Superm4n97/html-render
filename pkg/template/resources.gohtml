@@ -16,7 +16,7 @@
 
     <!-- Font Awesome 4.7 CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="print" onload="this.media='all'">
-    
+
 </head>
 <body>
 <header id="header">
@@ -26,12 +26,12 @@
          <nav class="ac-navbar">
             <!-- navbar logo start  -->
             <div class="ac-navbar-brand is-flex"><a href="/" class=""><img src="https://cdn.appscode.com/images/products/appscode/appscode.svg" alt="logo"></a><span class="brand-tag">kube-bind</span></div>
-            
+
             <div></div>
 
             <div class="ac-navbar-menu">
                <!-- single navbar menu item start  -->
-              
+
                <div class="ac-menu-item">
                   <button class="button ac-nav-button">
                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -43,7 +43,7 @@
                   </button>
                   <div class="ac-menu-content navbar-dropdown-wrapper" style="right: -30px;">
                      <ul class="ac-scrollbar p-0 app-drawer">
-                       
+
                         <li>
                            <a href="https://console.appscode.com">
                               <article class="media">
@@ -128,7 +128,7 @@
                               </article>
                            </a>
                         </li>
-               
+
                      </ul>
                   </div>
                </div>
@@ -326,6 +326,8 @@
          </div>
          </div>
       </div>
+
+      {{ if le (len .CRDs) 10 }}
       <div class="container">
          <div class="kube-bind-inner mb-32 mt-16">
             <input type="hidden" id="sessionID" name="sessionID" value="{{.SessionID}}">
@@ -333,7 +335,7 @@
             <div class="columns is-multiline">
                {{ range $idx, $crd := .CRDs}}
                   {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
-               
+
                      <div class="column is-3-desktop is-2-tablet is-1-mobile">
                      <input type="checkbox" class="is-hidden" id="crd_{{$idx}}" name="crd" value="{{$gr}}" {{if $crd.Bound}} disabled{{end}}>
                      <label for="crd_{{$idx}}" class="single-card">
@@ -347,12 +349,12 @@
                         </ul>
                      </label>
                      </div>
-            
+
                {{end}}
             </div>
          </div>
       </div>
-
+      {{ else }}
       <div class="container">
          <!-- list items start-->
          <div class="ac-table-container table-container b-1 mt-16">
@@ -372,7 +374,7 @@
                         <span>SCOPED</span>
                      </th>
                   </tr>
-                  
+
                </thead>
                <tbody>
                {{ range $idx, $crd := .CRDs}}
@@ -398,6 +400,7 @@
          </div>
          <!-- list items end-->
       </div>
+      {{ end }}
 
    </form>
 </div>
