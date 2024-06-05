@@ -310,95 +310,31 @@
    </div>
 </header>
 
-<div class="ac-system-body">
-   <div class="ac-system-left-sidebar">
-      <div class="ac-left-sidebar-wrapper">
-         <div class="ac-left-sidebar-inner">
-            <aside class="ac-left-sidebar">
-               <!-- sidebar header start  -->
-               <div class="sidebar-header">
-                  <!-- hamburger icon  -->
-                  <div class="icon hamburger-icon mr-8" data-testid="sidebar-menu-button">
-                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M3 13.5L10.5 13.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M3 9L15 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M3 4.5L7.5 4.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                     </svg>
-                  </div>
-               <a href="/" class="is-flex brand-logo"><img src="https://cdn.appscode.com/images/products/appscode/appscode-green-white.png" alt="brand-logo" class=""></a><span class="brand-tag">kube-bind</span>
-               </div>
-              
-               <ul class="menu-list ac-menu-list" data-testid="cluster-sidebar-menu-list">
-                  <li>
-                     <a href="/resource" class="" title=""><span><img src="https://img.icons8.com/ffffff/external-solidglyph-m-oki-orlando/32/external-components-supply-chain-management-solid-solidglyph-m-oki-orlando.png" alt="icon"></span><strong>Kube Bind</strong></a>
-                  </li>
-                   <li>
-                     <a href="/cutomize" class="" title=""><span><img src="https://img.icons8.com/ffffff/ios-filled/50/paint-palette.png" alt="icon"></span><strong>Customization</strong></a>
-                  </li>
-               </ul>
-               
-               <div class="sidebar-footer">
-                  <!-- back button  -->
-                  <button class="back-button is-transparent" data-testid="sidebar-footer-back-button">
-                     <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M11.25 13.5L6.75 9L11.25 4.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M16 14V4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                     </svg>
-                  </button>
-               
-                  
-                  <!-- color control  -->
-               </div>
-               <!-- sidebar footer  -->
-            </aside>
-            <!-- sidebar top end -->
-         </div>
-         <!-- left-sidebar menu end -->
-      </div>
-   </div>
-   <script type="text/javascript">
-      document.addEventListener('DOMContentLoaded', () => {
-      const systemBody = document.querySelector('.ac-system-body');
-      const button = systemBody.querySelector('.hamburger-icon.icon');
-      const backButton = systemBody.querySelector('.back-button');
-      const sidebar = systemBody.querySelector('.ac-system-left-sidebar');
-
-      function sidebarCollapsed(){
-         systemBody.classList.toggle('sidebar-collapsed');
-      }
-      button.addEventListener('click', (e) => {
-         e.stopPropagation();
-         sidebarCollapsed()
-      });
-      backButton.addEventListener('click', (e) => {
-         e.stopPropagation();
-         sidebarCollapsed()
-      });
-   });
-   </script>
-
+<div class="ac-system-body is-fullwidth">
    <form action="/bind" method="post" class="ac-system-content kube-bind-form">
       <div class="inner-header" style="top: 50px;">
-         <div class="is-flex is-justify-content-space-between">
-               <div class="header-items is-flex is-align-items-center">
-                  <div class="header-item">
-                     <h4 class="">Bind List</h4>
-                  </div>
-               </div>
-               <div class="header-items is-flex is-align-items-center">
-                  <input type="submit" value="BIND DATABASES" class="button ac-button is-primary"/>
+         <div class="container">
+            <div class="is-flex is-justify-content-space-between">
+            <div class="header-items is-flex is-align-items-center">
+               <div class="header-item">
+                  <h4 class="">All Bind</h4>
                </div>
             </div>
+            <div class="header-items is-flex is-align-items-center">
+               <input type="submit" value="BIND DATABASES" class="button ac-button is-primary"/>
+            </div>
+         </div>
+         </div>
       </div>
-      <div class="p-20">
-         <div class="kube-bind-inner mb-32">
+      <div class="container">
+         <div class="kube-bind-inner mb-32 mt-16">
             <input type="hidden" id="sessionID" name="sessionID" value="{{.SessionID}}">
             {{$sid := .SessionID}}
             <div class="columns is-multiline">
                {{ range $idx, $crd := .CRDs}}
                   {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
                
-                     <div class="column is-one-quarter-widescreen is-one-quarter-fullhd is-one-third-desktop is-half-tablet is-full-mobile">
+                     <div class="column is-3-desktop is-2-tablet is-1-mobile">
                      <input type="checkbox" class="is-hidden" id="crd_{{$idx}}" name="crd" value="{{$gr}}" {{if $crd.Bound}} disabled{{end}}>
                      <label for="crd_{{$idx}}" class="single-card">
                         <div class="icon">
@@ -417,49 +353,51 @@
          </div>
       </div>
 
-      <!-- list items start-->
-      <div class="ac-table-container table-container pb-20">
-         <table class="table ac-table is-bordered is-fullwidth">
-            <thead>
-               <tr class="is-hoverless" data-testid="ac-table-row">
-                  <th class="width-60">
-                    <!-- <input  id="checkbox-primary1" type="checkbox" name="checkbox-primary"> -->
-                  </th>
-                  <th>
-                     <span>TITLE</span>
-                  </th>
-                  <th>
-                     <span>GROUP</span>
-                  </th>
-                  <th>
-                     <span>SCOPED</span>
-                  </th>
-               </tr>
-               
-            </thead>
-            <tbody>
-             {{ range $idx, $crd := .CRDs}}
-             {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
-               <tr>
-                  <td class="{{if $crd.Bound}}is-disabled{{end}}">
-                     <input type="checkbox"  id="crd_{{$idx}}" name="crd" {{if $crd.Bound}} disabled{{end}} value="{{$gr}}"/>
-                  </td>
-                  <td class="{{if $crd.Bound}}is-disabled{{end}}">
-                     <label class="is-flex is-align-items-center gap-8" for="crd_{{$idx}}">
-                        <span class="icon">
-                           <img src="https://cdn.appscode.com/k8s/icons/kubedb.com/mongodbs.svg"/>
-                        </span>
-                        <h6>{{$crd.Kind}}</h6>
-                     </label>
-                  </td>
-                  <td class="{{if $crd.Bound}}is-disabled{{end}}">{{$crd.Group}}</td>
-                  <td class="{{if $crd.Bound}}is-disabled{{end}}">{{$crd.Scoped}}</td>
-               </tr>
-            {{ end }}
-            </tbody>
-         </table>
+      <div class="container">
+         <!-- list items start-->
+         <div class="ac-table-container table-container b-1 mt-16">
+            <table class="table ac-table is-bordered is-fullwidth">
+               <thead>
+                  <tr class="is-hoverless" data-testid="ac-table-row">
+                     <th class="width-60">
+                     <!-- <input  id="checkbox-primary1" type="checkbox" name="checkbox-primary"> -->
+                     </th>
+                     <th>
+                        <span>TITLE</span>
+                     </th>
+                     <th>
+                        <span>GROUP</span>
+                     </th>
+                     <th>
+                        <span>SCOPED</span>
+                     </th>
+                  </tr>
+                  
+               </thead>
+               <tbody>
+               {{ range $idx, $crd := .CRDs}}
+               {{ $gr := list $crd.Resource $crd.Group | compact | join "." }}
+                  <tr>
+                     <td class="{{if $crd.Bound}}is-disabled{{end}}">
+                        <input type="checkbox"  id="crd_{{$idx}}" name="crd" {{if $crd.Bound}} disabled{{end}} value="{{$gr}}"/>
+                     </td>
+                     <td class="{{if $crd.Bound}}is-disabled{{end}}">
+                        <label class="is-flex is-align-items-center gap-8" for="crd_{{$idx}}">
+                           <span class="icon">
+                              <img src="{{$crd.Icon}}"/>
+                           </span>
+                           <h6>{{$crd.Kind}}</h6>
+                        </label>
+                     </td>
+                     <td class="{{if $crd.Bound}}is-disabled{{end}}">{{$crd.Group}}</td>
+                     <td class="{{if $crd.Bound}}is-disabled{{end}}">{{$crd.Scoped}}</td>
+                  </tr>
+               {{ end }}
+               </tbody>
+            </table>
+         </div>
+         <!-- list items end-->
       </div>
-      <!-- list items end-->
 
    </form>
 </div>

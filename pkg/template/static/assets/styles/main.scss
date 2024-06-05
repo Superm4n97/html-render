@@ -20,85 +20,6 @@
 @import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/header/header-item";
 @import "../../../../../node_modules/@appscode/design-system/vue-components/styles/components/table";
 
-.sidebar-collapsed:not(.is-hoverable) .ac-left-sidebar-wrapper {
-    .brand-logo {
-      display: none !important;
-    }
-  
-    .sidebar-header {
-      justify-content: center;
-      padding: 10px;
-  
-      .hamburger-icon {
-        margin-right: 0 !important;
-      }
-    }
-  }
-  
-  .sidebar-header {
-    background-color: transparent;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    height: 50px;
-    display: flex;
-    // justify-content: space-between;
-    padding: 8px 20px;
-    align-items: center;
-  
-    .hamburger-icon {
-      cursor: pointer;
-      position: relative;
-      z-index: 1;
-      width: 32px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-  
-      &::after {
-        position: absolute;
-        content: "";
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        border-radius: 50%;
-        background-color: rgba(255, 255, 255, 0.1);
-        opacity: 0;
-        visibility: hidden;
-        transition: 0.3s ease-in-out;
-      }
-  
-      &:hover {
-        &::after {
-          opacity: 1;
-          visibility: visible;
-        }
-      }
-    }
-  
-    .brand-logo {
-      display: flex;
-      align-items: center;
-  
-      img {
-        max-height: 30px;
-      }
-    }
-  }
-
-.ac-left-sidebar {
-    .menu-list.ac-menu-list {
-        height: calc(100vh - 74px);
-    }
-}
-
-.sidebar-footer{
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    .back-button {
-        cursor: pointer;
-    }
-}
 
   // default layout css
 .ac-system-body {
@@ -146,7 +67,9 @@
     }
     td{
       vertical-align: middle;
-
+      h6{
+        font-weight: 500;
+      }
       .icon {
          width: 36px;
          height: 36px;
@@ -158,7 +81,11 @@
       }
    }
 }
-
+@media screen and (min-width: 1408px) {
+  .container:not(.is-max-desktop):not(.is-max-widescreen) {
+      max-width: 1152px;
+  }
+}
   
  ul {
     margin-bottom: 8px;
