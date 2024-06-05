@@ -817,6 +817,10 @@ table th {
   float: right !important;
 }
 
+.mb-0 {
+  margin-bottom: 0 !important;
+}
+
 .p-0 {
   padding: 0 !important;
 }
@@ -1113,6 +1117,10 @@ body:has(.has-info-content):after {
 }
 
 /*  Margin & Padding view-height & view-width */
+
+.mb-0 {
+  margin-bottom: 0px !important;
+}
 
 .p-0 {
   padding: 0px !important;
